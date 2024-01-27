@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="4.2" client="site" method="upgrade">
+	<name>MOD_NXDFM2_PLAYERS</name>
+	<creationDate>27.01.2024</creationDate>
+	<author>NXD | Marco Rensch</author>
+	<authorEmail>support@nx-designs.ch</authorEmail>
+	<authorUrl>https://nx-designs.ch</authorUrl>
+	<copyright>Copyright ©2023 by nx-designs</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<namespace path="src">NXD\Module\FootballManagerPlayers</namespace>
+	<version>2.0.0</version>
+	<description><![CDATA[MOD_NXDFM2_PLAYERS_XML_DESCRIPTION]]></description>
+
+	<files>
+		<folder module="mod_nxdfm2_players">services</folder>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+		<folder>src</folder>
+		<folder>models</folder>
+	</files>
+
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_nxdfm2_players.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.mod_nxdfm2_players.sys.ini</language>
+	</languages>
+
+	<!-- Update servers -->
+	<updateservers>
+		<server type="extension" priority="1" name="nxdfm2_players">https://update.nx-designs.ch/joomla/modules/mod_nxdfm2_players.xml</server>
+	</updateservers>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic"
+					  addfieldpath="/modules/mod_nxdfm2_players/src/models/fields"
+			>
+				<field name="team_id"
+						type="TeamSelect"
+						label="MOD_NXDFM2_PLAYERS_TEAM_FILTER_LABEL"
+						description="MOD_NXDFM2_PLAYERS_FILTER_DESC"
+						default=""
+						show_select="true">
+				</field>
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="moduleclass_sfx"
+						type="text"
+						label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+						description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>
