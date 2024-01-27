@@ -11,7 +11,7 @@
  *
  */
 
-namespace NXD\Module\FootballmanagerPlayers\Fields;
+namespace NXD\Module\FootballManagerPlayers\Field;
 
 defined('_JEXEC') or die;
 
