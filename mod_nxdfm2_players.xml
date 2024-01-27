@@ -33,7 +33,7 @@
 		<fields name="params">
 			<fieldset name="basic"
 					  addfieldpath="/modules/mod_nxdfm2_players/src/models/fields"
-			>
+					  addfieldprefix="NXD\Module\FootballmanagerPlayers\Field">
 				<field name="team_id"
 						type="TeamSelect"
 						label="MOD_NXDFM2_PLAYERS_TEAM_FILTER_LABEL"
