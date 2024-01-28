@@ -14,6 +14,7 @@ class Dispatcher extends AbstractModuleDispatcher implements HelperFactoryAwareI
 	{
 //		$settings = new Registry($this->module->params);
 //		dump($settings);
+
 		$data = parent::getLayoutData();
 		$data['players'] = $this->getHelperFactory()->getHelper('PlayersHelper')->getPlayers($data['params'], $this->getApplication());
 		return $data;

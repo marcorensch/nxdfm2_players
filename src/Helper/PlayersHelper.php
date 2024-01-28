@@ -13,6 +13,12 @@ class PlayersHelper
 	{
 		$model = $app->bootComponent('com_footballmanager')->getMVCFactory()->createModel('Players', 'Site', ['ignore_request' => true]);
 		$model->setState('params', $app->getParams());
+
+		// Set the module params
+		$model->setState('filter.teamId', $params->get('team_id', null));
+		$model->setState('filter.currentTeamOnly', $params->get('only_current_team_positions', '0'));
+		$model->setState('filter.activePositionsOnly', $params->get('only_active_positions', '1'));
+
 		$items = $model->getItems();
 		return $items;
 	}

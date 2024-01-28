@@ -1,52 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="4.2" client="site" method="upgrade">
-	<name>MOD_NXDFM2_PLAYERS</name>
-	<creationDate>27.01.2024</creationDate>
-	<author>NXD | Marco Rensch</author>
-	<authorEmail>support@nx-designs.ch</authorEmail>
-	<authorUrl>https://nx-designs.ch</authorUrl>
-	<copyright>Copyright ©2023 by nx-designs</copyright>
-	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<namespace path="src">NXD\Module\FootballManagerPlayers</namespace>
-	<version>2.0.0</version>
-	<description><![CDATA[MOD_NXDFM2_PLAYERS_XML_DESCRIPTION]]></description>
+    <name>MOD_NXDFM2_PLAYERS</name>
+    <creationDate>27.01.2024</creationDate>
+    <author>NXD | Marco Rensch</author>
+    <authorEmail>support@nx-designs.ch</authorEmail>
+    <authorUrl>https://nx-designs.ch</authorUrl>
+    <copyright>Copyright ©2023 by nx-designs</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <namespace path="src">NXD\Module\FootballManagerPlayers</namespace>
+    <version>2.0.0</version>
+    <description><![CDATA[MOD_NXDFM2_PLAYERS_XML_DESCRIPTION]]></description>
 
-	<files>
-		<folder module="mod_nxdfm2_players">services</folder>
-		<folder>tmpl</folder>
-		<folder>language</folder>
-		<folder>src</folder>
-	</files>
+    <files>
+        <folder module="mod_nxdfm2_players">services</folder>
+        <folder>tmpl</folder>
+        <folder>language</folder>
+        <folder>src</folder>
+    </files>
 
-	<languages>
-		<language tag="en-GB">language/en-GB/en-GB.mod_nxdfm2_players.ini</language>
-		<language tag="en-GB">language/en-GB/en-GB.mod_nxdfm2_players.sys.ini</language>
-	</languages>
+    <languages>
+        <language tag="en-GB">language/en-GB/en-GB.mod_nxdfm2_players.ini</language>
+        <language tag="en-GB">language/en-GB/en-GB.mod_nxdfm2_players.sys.ini</language>
+    </languages>
 
-	<!-- Update servers -->
-	<updateservers>
-		<server type="extension" priority="1" name="nxdfm2_players">https://update.nx-designs.ch/joomla/modules/mod_nxdfm2_players.xml</server>
-	</updateservers>
+    <!-- Update servers -->
+    <updateservers>
+        <server type="extension" priority="1" name="nxdfm2_players">
+            https://update.nx-designs.ch/joomla/modules/mod_nxdfm2_players.xml
+        </server>
+    </updateservers>
 
-	<config>
-		<fields name="params">
-			<fieldset name="basic"
-					  addfieldprefix="NXD\Module\FootballManagerPlayers\Site\Field"
-			>
-				<field name="team_id"
-						type="TeamSelect"
-						label="MOD_NXDFM2_PLAYERS_TEAM_FILTER_LABEL"
-						description="MOD_NXDFM2_PLAYERS_FILTER_DESC"
-						default=""
-						show_select="true">
-				</field>
-			</fieldset>
-			<fieldset name="advanced">
-				<field name="moduleclass_sfx"
-						type="text"
-						label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
-						description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
-			</fieldset>
-		</fields>
-	</config>
+    <config>
+        <fields name="params">
+            <fieldset name="basic"
+                      addfieldprefix="NXD\Component\Footballmanager\Administrator\Field"
+            >
+                <field name="team_id"
+                       type="Teams"
+                       label="MOD_NXDFM2_PLAYERS_TEAM_FILTER_LABEL"
+                       description="MOD_NXDFM2_PLAYERS_TEAM_FILTER_DESC"
+                       layout="joomla.form.field.list-fancy-select"
+                       default=""
+                       required="true"
+                       filter="integer"
+                >
+                    <option value="">MOD_NXDFM2_PLAYERS_OPT_SELECT_TEAM</option>
+                </field>
+                <field name="only_current_team_positions"
+                       type="radio"
+                       label="MOD_NXDFM2_PLAYERS_POSITIONS_ONLY_CURRENT_TEAM_LABEL"
+                       description="MOD_NXDFM2_PLAYERS_POSITIONS_ONLY_CURRENT_TEAM_DESC"
+                       default="0"
+                       filter="integer"
+                       class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="only_active_positions"
+                       type="radio"
+                       label="MOD_NXDFM2_PLAYERS_ACTIVE_POSITIONS_ONLY_LABEL"
+                       description="MOD_NXDFM2_PLAYERS_ACTIVE_POSITIONS_ONLY_DESC"
+                       default="1"
+                       filter="integer"
+                       class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+            <fieldset name="nxdfm2_players_display">
+                <field name="load_uikit"
+                       type="radio"
+                       label="MOD_NXDFM2_PLAYERS_LOAD_UIKIT_LABEL"
+                       description="MOD_NXDFM2_PLAYERS_LOAD_UIKIT_DESC"
+                       default="1"
+                       filter="integer"
+                       class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="template"
+                       type="list"
+                       label="MOD_NXDFM2_PLAYERS_TEMPLATE_LABEL"
+                       description="MOD_NXDFM2_PLAYERS_TEMPLATE_DESC"
+                       default="grid"
+                >
+                    <option value="grid">MOD_NXDFM2_PLAYERS_TEMPLATE_OPTION_GRID</option>
+                </field>
+                <field name="columns"
+                       showon="template:grid"
+                       type="radio"
+                       label="MOD_NXDFM2_PLAYERS_COLUMNS_LABEL"
+                       description="MOD_NXDFM2_PLAYERS_COLUMNS_DESC"
+                       default="1"
+                       filter="integer"
+                       class="btn-group"
+                >
+                    <option value="1">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_1</option>
+                    <option value="2">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_2</option>
+                    <option value="3">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_3</option>
+                    <option value="4">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_4</option>
+                    <option value="5">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_5</option>
+                    <option value="6">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_6</option>
+                </field>
+                <field name="columns_s"
+                       showon="template:grid"
+                       type="radio"
+                       label="MOD_NXDFM2_PLAYERS_COLUMNS_S_LABEL"
+                       description="MOD_NXDFM2_PLAYERS_COLUMNS_S_DESC"
+                       default="2"
+                       filter="integer"
+                       class="btn-group"
+                >
+                    <option value="1">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_1</option>
+                    <option value="2">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_2</option>
+                    <option value="3">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_3</option>
+                    <option value="4">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_4</option>
+                    <option value="5">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_5</option>
+                    <option value="6">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_6</option>
+                </field>
+                <field name="columns_m"
+                       showon="template:grid"
+                       type="radio"
+                       label="MOD_NXDFM2_PLAYERS_COLUMNS_M_LABEL"
+                       description="MOD_NXDFM2_PLAYERS_COLUMNS_M_DESC"
+                       default="4"
+                       filter="integer"
+                       class="btn-group"
+                >
+                    <option value="1">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_1</option>
+                    <option value="2">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_2</option>
+                    <option value="3">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_3</option>
+                    <option value="4">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_4</option>
+                    <option value="5">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_5</option>
+                    <option value="6">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_6</option>
+                </field>
+                <field name="columns_l"
+                       showon="template:grid"
+                       type="radio"
+                       label="MOD_NXDFM2_PLAYERS_COLUMNS_L_LABEL"
+                       description="MOD_NXDFM2_PLAYERS_COLUMNS_L_DESC"
+                       default="5"
+                       filter="integer"
+                       class="btn-group"
+                >
+                    <option value="1">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_1</option>
+                    <option value="2">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_2</option>
+                    <option value="3">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_3</option>
+                    <option value="4">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_4</option>
+                    <option value="5">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_5</option>
+                    <option value="6">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_6</option>
+                </field>
+                <field name="columns_xl"
+                       showon="template:grid"
+                       type="radio"
+                       label="MOD_NXDFM2_PLAYERS_COLUMNS_XL_LABEL"
+                       description="MOD_NXDFM2_PLAYERS_COLUMNS_XL_DESC"
+                       default="6"
+                       filter="integer"
+                       class="btn-group"
+                >
+                    <option value="1">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_1</option>
+                    <option value="2">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_2</option>
+                    <option value="3">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_3</option>
+                    <option value="4">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_4</option>
+                    <option value="5">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_5</option>
+                    <option value="6">MOD_NXDFM2_PLAYERS_COLUMNS_OPTION_6</option>
+                </field>
+
+            </fieldset>
+            <fieldset name="advanced">
+                <field name="moduleclass_sfx"
+                       type="text"
+                       label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                       description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"/>
+            </fieldset>
+        </fields>
+    </config>
 </extension>
