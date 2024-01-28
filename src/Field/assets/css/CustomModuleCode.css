@@ -1,0 +1,24 @@
+#attrib-nxdfm2_players_display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+#attrib-nxdfm2_players_display .control-group .control-label,
+#attrib-nxdfm2_players_display .btn-group{
+    width: 100%;
+}
+@media (min-width: 640px) {
+    #attrib-nxdfm2_players_display > fieldset.options-form{
+        width: calc(100% / 2 - 1rem);
+    }
+}
+@media (min-width: 1280px) {
+    #attrib-nxdfm2_players_display > fieldset.options-form{
+        width: calc(100% / 3 - 1rem);
+    }
+}
+@media (min-width: 1920px) {
+    #attrib-nxdfm2_players_display > fieldset.options-form{
+        width: calc(100% / 4 - 1rem);
+    }
+}

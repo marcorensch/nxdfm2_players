@@ -1,0 +1,19 @@
+.nxd-player-grid-card{
+    padding-bottom: 150%;
+    height: 0;
+}
+
+.uk-card-body {
+    padding: 20px 10px 30px;
+    background: #fff;
+    position: relative;
+    z-index: 2;
+}
+
+.uk-card-body-container {
+
+}
+
+.uk-card-body > * {
+
+}
