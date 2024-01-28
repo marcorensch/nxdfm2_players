@@ -1,8 +1,7 @@
 <?php
 /**
- * @package     Joomla.Administrator
- *              Joomla.Site
- * @subpackage  com_footballmanager
+ * @package     Joomla.Site
+ * @subpackage  mod_nxdfm2_players
  * @author      Marco Rensch
  * @since 	    1.0.0
  *
@@ -11,7 +10,7 @@
  *
  */
 
-namespace NXD\Module\FootballManagerPlayers\Field;
+namespace NXD\Module\FootballManagerPlayers\Site\Field;
 
 defined('_JEXEC') or die;
 
@@ -21,6 +20,7 @@ use Joomla\CMS\Form\FormHelper;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\Database\DatabaseInterface;
 use YOOtheme\Builder\Joomla\Fields\FieldsHelper;
+
 
 class TeamSelectField extends ListField
 {
