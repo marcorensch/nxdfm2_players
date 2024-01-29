@@ -45,4 +45,6 @@ $template   = $params->get('layout', 'grid');
 $layoutPath = JPATH_BASE . '/modules/mod_nxdfm2_players/tmpl/layout/' . $template . '/default.php';
 
 // Check if the file exists & include it
+echo '<div class="nxd-players-module '.$params->get('moduleclass_container_sfx','').'">';
 if (file_exists($layoutPath)) include $layoutPath;
+echo '</div>';

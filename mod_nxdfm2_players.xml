@@ -300,8 +300,9 @@
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
-                <field name="moduleclass_sfx"
-                       type="text"
+                <field name="moduleclass_container_sfx"
+                       type="textarea"
+                       rows="3"
                        label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
                        description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"/>
                 <field name="custom_backend_css" type="CustomModuleCode" addfieldprefix="NXD\Module\FootballManagerPlayers\Site\Field" />

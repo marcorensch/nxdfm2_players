@@ -1,24 +1,38 @@
-#attrib-nxdfm2_players_display {
+#attrib-nxdfm2_players_display > div#flexbox {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.5rem;
+    justify-content: space-between;
 }
-#attrib-nxdfm2_players_display .control-group .control-label,
-#attrib-nxdfm2_players_display .btn-group{
+#attrib-nxdfm2_players_display > div#flexbox .control-group .control-label,
+#attrib-nxdfm2_players_display > div#flexbox .btn-group{
     width: 100%;
 }
+#attrib-nxdfm2_players_display > div#flexbox > fieldset.options-form:first-of-type{
+
+}
 @media (min-width: 640px) {
-    #attrib-nxdfm2_players_display > fieldset.options-form{
-        width: calc(100% / 2 - 1rem);
+    #attrib-nxdfm2_players_display > div#flexbox > fieldset.options-form{
+        width: auto;
+        flex-shrink: 1;
+        flex-grow: 1;
     }
 }
 @media (min-width: 1280px) {
-    #attrib-nxdfm2_players_display > fieldset.options-form{
-        width: calc(100% / 3 - 1rem);
+    #attrib-nxdfm2_players_display > div#flexbox > fieldset.options-form{
+        width: auto;
+        flex-shrink: 1;
+        flex-grow: 1;
     }
 }
 @media (min-width: 1920px) {
-    #attrib-nxdfm2_players_display > fieldset.options-form{
-        width: calc(100% / 4 - 1rem);
+    #attrib-nxdfm2_players_display > div#flexbox > fieldset.options-form{
+        width: auto;
+        flex-shrink: 1;
+        flex-grow: 1;
     }
+}
+/* Hide the custom CSS field in the form */
+.control-group:has(#jform_params_custom_backend_css-lbl) {
+    display: none;
 }

@@ -23,6 +23,7 @@ class CustomModuleCodeField extends HiddenField
 	private function addStylesheet()
 	{
 		$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+		$wa->registerAndUseScript('CustomBackendJs', 'modules/mod_nxdfm2_players/src/Field/assets/js/CustomModuleCode.js');
 		$wa->registerAndUseStyle('CustomBackendCss', 'modules/mod_nxdfm2_players/src/Field/assets/css/CustomModuleCode.css');
 	}
 
