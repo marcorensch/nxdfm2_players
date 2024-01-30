@@ -10,8 +10,8 @@
 
 defined('_JEXEC') or die;
 
-
 use Joomla\CMS\Factory;
+use Joomla\CMS\Helper\ModuleHelper;
 
 $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 if ($params->get('load_uikit', 1))
@@ -40,11 +40,6 @@ if ($params->get('debug', 0)): ?>
 
 <?php endif; ?>
 <?php
-// set the path to the layout file
-$template   = $params->get('layout', 'grid');
-$layoutPath = JPATH_BASE . '/modules/mod_nxdfm2_players/tmpl/layout/' . $template . '/default.php';
-
-// Check if the file exists & include it
-echo '<div class="nxd-players-module '.$params->get('moduleclass_container_sfx','').'">';
-if (file_exists($layoutPath)) include $layoutPath;
+echo '<div class="nxd-players-module ' . $params->get('moduleclass_container_sfx', '') . '">';
+    require ModuleHelper::getLayoutPath('mod_nxdfm2_players', $params->get('layout', 'grid') . '_default');
 echo '</div>';

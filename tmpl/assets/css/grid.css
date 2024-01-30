@@ -1,0 +1,65 @@
+@font-face {
+    font-family: "Anton Regular";
+    src: url('/modules/mod_nxdfm2_players/tmpl/assets/fonts/Anton-Regular.otf');
+}
+
+@font-face {
+    font-family: "Bebas Neue Regular";
+    src: url('/modules/mod_nxdfm2_players/tmpl/assets/fonts/BebasNeue-Regular.otf');
+}
+
+.nxd-player-grid-card{
+    padding-bottom: 150%;
+    height: 0;
+}
+
+.uk-card-body {
+    padding: 20px 10px 30px;
+    background: #fff;
+    position: relative;
+    z-index: 2;
+}
+
+.uk-card-body h3 {
+    font-family: "Bebas Neue Regular", serif;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.player-number {
+    font-family: "Anton Regular", serif;
+    display: block;
+    font-size:4rem;
+}
+
+.player-firstname {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    font-weight: 200;
+}
+
+.player-lastname {
+    display: block;
+    font-size: 2rem;
+    line-height: 2rem;
+}
+
+
+
+.uk-card-body-container {
+
+}
+
+.uk-card-body > * {
+
+}
+
+/* Modal */
+
+.nxd-z-index-100 {
+    z-index: 100;
+}

@@ -13,7 +13,7 @@
 }
 @media (min-width: 640px) {
     #attrib-nxdfm2_players_display > div#flexbox > fieldset.options-form{
-        width: auto;
+        width: 100%;
         flex-shrink: 1;
         flex-grow: 1;
     }
@@ -27,7 +27,7 @@
 }
 @media (min-width: 1920px) {
     #attrib-nxdfm2_players_display > div#flexbox > fieldset.options-form{
-        width: auto;
+        width: 25%; /* results in three columns because of padding / margin */
         flex-shrink: 1;
         flex-grow: 1;
     }

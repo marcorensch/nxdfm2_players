@@ -267,6 +267,18 @@
                     </field>
                 </fieldset>
 
+                <fieldset name="item_options">
+                    <field name="show_modal"
+                           label="MOD_NXDFM2_PLAYERS_ENABLE_DETAILS_LABEL"
+                            description="MOD_NXDFM2_PLAYERS_ENABLE_DETAILS_DESC"
+                           type="radio"
+                           class="btn-group btn-group-yesno"
+                           default="1">
+                        <option value="1">JYES</option>
+                        <option value="0">JNO</option>
+                    </field>
+                </fieldset>
+
                 <fieldset name="custom_css">
                     <field name="custom_card_classnames"
                            showon="template:grid"
