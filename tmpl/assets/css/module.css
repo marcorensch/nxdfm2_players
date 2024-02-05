@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "Anton Regular";
+    src: url('/modules/mod_nxdfm2_players/tmpl/assets/fonts/Anton-Regular.otf');
+}
+
+@font-face {
+    font-family: "Bebas Neue Regular";
+    src: url('/modules/mod_nxdfm2_players/tmpl/assets/fonts/BebasNeue-Regular.otf');
+}
+
+.nxd-players-module a.social-media-link {
+    font-size: 2rem;
+}

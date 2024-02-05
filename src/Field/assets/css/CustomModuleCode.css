@@ -1,32 +1,32 @@
-#attrib-nxdfm2_players_display > div#flexbox {
+#attrib-nxdfm2_players_display[active] {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
     justify-content: space-between;
 }
-#attrib-nxdfm2_players_display > div#flexbox .control-group .control-label,
-#attrib-nxdfm2_players_display > div#flexbox .btn-group{
+#attrib-nxdfm2_players_display .control-group .control-label,
+#attrib-nxdfm2_players_display .btn-group{
     width: 100%;
 }
-#attrib-nxdfm2_players_display > div#flexbox > fieldset.options-form:first-of-type{
+#attrib-nxdfm2_players_display > fieldset.options-form:first-of-type{
 
 }
 @media (min-width: 640px) {
-    #attrib-nxdfm2_players_display > div#flexbox > fieldset.options-form{
+    #attrib-nxdfm2_players_display > fieldset.options-form{
         width: 100%;
         flex-shrink: 1;
         flex-grow: 1;
     }
 }
 @media (min-width: 1280px) {
-    #attrib-nxdfm2_players_display > div#flexbox > fieldset.options-form{
+    #attrib-nxdfm2_players_display > fieldset.options-form{
         width: auto;
         flex-shrink: 1;
         flex-grow: 1;
     }
 }
 @media (min-width: 1920px) {
-    #attrib-nxdfm2_players_display > div#flexbox > fieldset.options-form{
+    #attrib-nxdfm2_players_display > fieldset.options-form{
         width: 25%; /* results in three columns because of padding / margin */
         flex-shrink: 1;
         flex-grow: 1;

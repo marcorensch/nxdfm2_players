@@ -66,9 +66,10 @@
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
-                <field name="fallback_image" type="media" label="MOD_NXDFM2_PLAYERS_FALLBACK_IMG_LABEL" description="MOD_NXDFM2_PLAYERS_FALLBACK_IMG_DES"/>
+                <field name="fallback_image" type="media" label="MOD_NXDFM2_PLAYERS_FALLBACK_IMG_LABEL"
+                       description="MOD_NXDFM2_PLAYERS_FALLBACK_IMG_DES"/>
             </fieldset>
-            <fieldset name="nxdfm2_players_display" class="uk-child-width-1-2">
+            <fieldset name="nxdfm2_players_display" class="flexbox">
 
                 <fieldset name="layout">
                     <field name="load_uikit"
@@ -270,13 +271,44 @@
                 <fieldset name="item_options">
                     <field name="show_modal"
                            label="MOD_NXDFM2_PLAYERS_ENABLE_DETAILS_LABEL"
-                            description="MOD_NXDFM2_PLAYERS_ENABLE_DETAILS_DESC"
+                           description="MOD_NXDFM2_PLAYERS_ENABLE_DETAILS_DESC"
                            type="radio"
                            class="btn-group btn-group-yesno"
                            default="1">
                         <option value="1">JYES</option>
                         <option value="0">JNO</option>
                     </field>
+                    <field name="modal_breakpoint"
+                           type="radio"
+                           class="btn-group"
+                           label="MOD_NXDFM2_PLAYERS_MODAL_BREAKPOINT_LABEL"
+                           description="MOD_NXDFM2_PLAYERS_MODAL_BREAKPOINT_DESC"
+                           default="m"
+                    >
+                        <option value="s">MOD_NXDFM2_PLAYERS_OPTION_PHONE_90</option>
+                        <option value="m">MOD_NXDFM2_PLAYERS_OPTION_TABLET</option>
+                        <option value="l">MOD_NXDFM2_PLAYERS_OPTION_LAPTOP</option>
+                        <option value="xl">MOD_NXDFM2_PLAYERS_OPTION_DESKTOP</option>
+                    </field>
+                    <field name="date_format"
+                           type="radio"
+                           class="btn-group"
+                           label="MOD_NXDFM_DATE_FORMAT_LABEL"
+                           description="MOD_NXDFM_DATE_FORMAT_DESC"
+                           default="DATE_FORMAT_LC4"
+                    >
+                        <option value="DATE_FORMAT_LC4">DATE_FORMAT_LC4</option>
+                        <option value="DATE_FORMAT_LC3">DATE_FORMAT_LC3</option>
+                        <option value="DATE_FORMAT_JS1">DATE_FORMAT_JS1</option>
+                        <option value="MOD_NXDFM_DATE_FORMAT_YEAR">MOD_NXDFM_DATE_FORMAT_YEAR</option>
+                    </field>
+                    <field name="group_fields"
+                           type="customfieldgroups"
+                           layout="joomla.form.field.list-fancy-select"
+                           label="MOD_NXDFM2_PLAYERS_GROUPED_CUSTOMFIELDS_LABEL"
+                           description="MOD_NXDFM2_PLAYERS_GROUPED_CUSTOMFIELDS_DESC"
+                           multiple="true"
+                    />
                 </fieldset>
 
                 <fieldset name="custom_css">
@@ -304,11 +336,19 @@
                            description="MOD_NXDFM2_PLAYERS_CUSTOM_CARD_TITLE_CLASSNAMES_DESC"
                            default=""
                     />
+                    <field name="modal_container_classnames"
+                           type="textarea"
+                           rows="2"
+                           label="MOD_NXDFM2_PLAYERS_MODAL_CONTAINER_CLASSNAMES_LABEL"
+                           description="MOD_NXDFM2_PLAYERS_MODAL_CONTAINER_CLASSNAMES_DESC"
+                           default=""
+                    />
                 </fieldset>
 
             </fieldset>
             <fieldset name="advanced">
-                <field name="debug" label="MOD_NXDFM2_PLAYERS_DEBUG_LABEL" default="0" type="radio" class="btn-group btn-group-yesno">
+                <field name="debug" label="MOD_NXDFM2_PLAYERS_DEBUG_LABEL" default="0" type="radio"
+                       class="btn-group btn-group-yesno">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
@@ -317,7 +357,8 @@
                        rows="3"
                        label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
                        description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"/>
-                <field name="custom_backend_css" type="CustomModuleCode" addfieldprefix="NXD\Module\FootballManagerPlayers\Site\Field" />
+                <field name="custom_backend_css" type="CustomModuleCode"
+                       addfieldprefix="NXD\Module\FootballManagerPlayers\Site\Field"/>
             </fieldset>
         </fields>
     </config>
