@@ -1,16 +1,16 @@
-.nxd-players-module .nxd-player-grid-card{
+.nxd-people-module .nxd-player-grid-card{
     padding-bottom: 150%;
     height: 0;
 }
 
-.nxd-players-module .uk-card-body {
+.nxd-people-module .uk-card-body {
     padding: 20px 10px 30px;
     background: #fff;
     position: relative;
     z-index: 2;
 }
 
-.nxd-players-module .uk-card-body h3 {
+.nxd-people-module .uk-card-body h3 {
     font-family: "Bebas Neue Regular", serif;
     font-weight: 700;
     margin: 0;
@@ -19,20 +19,20 @@
     color: #000;
 }
 
-.nxd-players-module .player-number {
+.nxd-people-module .player-number {
     font-family: "Anton Regular", serif;
     display: block;
     font-size:4rem;
 }
 
-.nxd-players-module .player-firstname {
+.nxd-people-module .player-firstname {
     display: block;
     font-size: 1.2rem;
     margin-bottom: 0;
     font-weight: 200;
 }
 
-.nxd-players-module .player-lastname {
+.nxd-people-module .player-lastname {
     display: block;
     font-size: 2rem;
     line-height: 2rem;
@@ -40,24 +40,24 @@
 
 /* Modal */
 
-.nxd-players-module-modal .nxd-z-index-100 {
+.nxd-people-module-modal .nxd-z-index-100 {
     z-index: 100;
 }
 
-.nxd-players-module-modal .player-history-title {
+.nxd-people-module-modal .player-history-title {
     user-select: none;
 }
 
-.nxd-players-module-modal .player-name .player-firstname {
+.nxd-people-module-modal .player-name .player-firstname {
     font-family: "Bebas Neue Regular", serif;
     font-size: 4rem;
 }
 
-.nxd-players-module-modal .player-name .player-lastname {
+.nxd-people-module-modal .player-name .player-lastname {
     font-family: "Bebas Neue Regular", serif;
     font-size: 4rem;
 }
 
-.nxd-players-module-modal .player-number-effect {
+.nxd-people-module-modal .player-number-effect {
 
 }

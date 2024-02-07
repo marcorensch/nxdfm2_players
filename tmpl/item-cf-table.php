@@ -1,6 +1,6 @@
 <?php
 /**
- * @package                                     NXD Football Manager 2 Players Module (mod_nxdfm2_players)
+ * @package                                     NXD Football Manager 2 People Module (mod_nxdfm2_people)
  *
  * @author                                      NXD | Marco Rensch <support@nx-designs.ch>
  * @copyright                                   Copyright(R) 2024 by NXD nx-designs
@@ -8,16 +8,18 @@
  * @link                                        https://www.nx-designs.ch
  *
  * @var $params Joomla\CMS\Parameter\Parameter  The module parameters
- * @var $player stdClass                        The player object
+ * @var $person stdClass                        The player object
  *
  */
 
-use NXD\Module\FootballManagerPlayers\Site\Helper\CustomFieldHelper;
+use NXD\Module\FootballManagerPeople\Site\Helper\CustomFieldHelper;
 
 defined('_JEXEC') or die;
 ?>
 
-<?php foreach($player->cfields['groups'] as $cfGroup):?>
+<?php
+if(isset($person->cfields['groups'])):
+foreach($person->cfields['groups'] as $cfGroup):?>
 	<tr>
 		<th><?php echo $cfGroup[0]->group_title; ?></th>
 		<td>
@@ -26,4 +28,6 @@ defined('_JEXEC') or die;
 			<?php endforeach; ?>
 		</td>
 	</tr>
-<?php endforeach; ?>
+<?php endforeach;
+endif;
+?>

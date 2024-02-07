@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const playersDisplayTab = document.querySelector('#attrib-nxdfm2_players_display');
-    if (playersDisplayTab) {
-        // playersDisplayTab.classList.add('flexbox');
+    const peopleDisplayTab = document.querySelector('#attrib-nxdfm2_people_display');
+    if (peopleDisplayTab) {
+        // peopleDisplayTab.classList.add('flexbox');
     }
 });

@@ -1,6 +1,6 @@
 <?php
 /**
- * @package                                     NXD Football Manager 2 Players Module (mod_nxdfm2_players)
+ * @package                                     NXD Football Manager 2 People Module (mod_nxdfm2_people)
  *
  * @author                                      NXD | Marco Rensch <support@nx-designs.ch>
  * @copyright                                   Copyright(R) 2024 by NXD nx-designs
@@ -8,7 +8,7 @@
  * @link                                        https://www.nx-designs.ch
  *
  * @var $params Joomla\CMS\Parameter\Parameter  The module parameters
- * @var $players array                        contains the players
+ * @var $people array                        contains the people
  *
  */
 
@@ -33,7 +33,7 @@ if ($params->get('load_uikit', 1))
 	$wa->useStyle('com_footballmanager.uikitcss');
 }
 
-$wa->registerAndUseStyle('NXDPlayersCSS', 'modules/mod_nxdfm2_players/tmpl/assets/css/module.css');
+$wa->registerAndUseStyle('NXDPlayersCSS', 'modules/mod_nxdfm2_people/tmpl/assets/css/module.css');
 
 if ($params->get('debug', 0)): ?>
     <div class="uk-section">
@@ -43,7 +43,7 @@ if ($params->get('debug', 0)): ?>
                     <a class="uk-accordion-title" href>Debug</a>
                     <div class="uk-accordion-content">
 						<?php
-						echo '<pre>' . var_export($players, true) . '</pre>';
+						echo '<pre>' . var_export($people, true) . '</pre>';
 						echo '<pre>' . var_export($params, true) . '</pre>';
 						?>
                     </div>
@@ -51,9 +51,8 @@ if ($params->get('debug', 0)): ?>
             </ul>
         </div>
     </div>
-
 <?php endif; ?>
 <?php
-echo '<div class="nxd-players-module ' . $params->get('moduleclass_container_sfx', '') . '">';
-    require ModuleHelper::getLayoutPath('mod_nxdfm2_players', $params->get('layout', 'grid') . '_default');
+echo '<div class="nxd-people-module ' . $params->get('moduleclass_container_sfx', '') . '">';
+    include ModuleHelper::getLayoutPath('mod_nxdfm2_people' , $params->get('layout', 'grid') . '/default');
 echo '</div>';

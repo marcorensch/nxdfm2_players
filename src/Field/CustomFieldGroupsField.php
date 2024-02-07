@@ -1,6 +1,6 @@
 <?php
 /**
- * @package                                     NXD Football Manager 2 Players Module (mod_nxdfm2_players)
+ * @package                                     NXD Football Manager 2 People Module (mod_nxdfm2_people)
  *
  * @author                                      NXD | Marco Rensch <support@nx-designs.ch>
  * @copyright                                   Copyright(R) 2024 by NXD nx-designs
@@ -9,7 +9,7 @@
  *
  */
 
-namespace NXD\Module\FootballManagerPlayers\Site\Field;
+namespace NXD\Module\FootballManagerPeople\Site\Field;
 
 defined('_JEXEC') or die;
 

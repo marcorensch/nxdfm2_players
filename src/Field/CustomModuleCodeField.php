@@ -1,6 +1,6 @@
 <?php
 /**
- * @package                                     NXD Football Manager 2 Players Module (mod_nxdfm2_players)
+ * @package                                     NXD Football Manager 2 People Module (mod_nxdfm2_people)
  *
  * @author                                      NXD | Marco Rensch <support@nx-designs.ch>
  * @copyright                                   Copyright(R) 2024 by NXD nx-designs
@@ -9,7 +9,7 @@
  *
  */
 
-namespace NXD\Module\FootballManagerPlayers\Site\Field;
+namespace NXD\Module\FootballManagerPeople\Site\Field;
 
 defined('_JEXEC') or die;
 
@@ -34,8 +34,8 @@ class CustomModuleCodeField extends HiddenField
 	private function addStylesheet()
 	{
 		$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
-		$wa->registerAndUseScript('CustomBackendJs', 'modules/mod_nxdfm2_players/src/Field/assets/js/CustomModuleCode.js');
-		$wa->registerAndUseStyle('CustomBackendCss', 'modules/mod_nxdfm2_players/src/Field/assets/css/CustomModuleCode.css');
+		$wa->registerAndUseScript('CustomBackendJs', 'modules/mod_nxdfm2_people/src/Field/assets/js/CustomModuleCode.js');
+		$wa->registerAndUseStyle('CustomBackendCss', 'modules/mod_nxdfm2_people/src/Field/assets/css/CustomModuleCode.css');
 	}
 
 }

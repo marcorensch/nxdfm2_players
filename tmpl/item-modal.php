@@ -1,6 +1,6 @@
 <?php
 /**
- * @package                                     NXD Football Manager 2 Players Module (mod_nxdfm2_players)
+ * @package                                     NXD Football Manager 2 People Module (mod_nxdfm2_people)
  *
  * @author                                      NXD | Marco Rensch <support@nx-designs.ch>
  * @copyright                                   Copyright(R) 2024 by NXD nx-designs
@@ -8,7 +8,7 @@
  * @link                                        https://www.nx-designs.ch
  *
  * @var $params Joomla\CMS\Parameter\Parameter  The module parameters
- * @var $player stdClass                        The player object
+ * @var $person stdClass                        The player object
  *
  */
 
@@ -24,38 +24,38 @@ $visibilityClassname = 'uk-visible@' . $breakPoint;
 $imageSmallClassname = 'uk-display-block uk-margin-auto uk-width-3-4@s uk-hidden@' . $breakPoint;
 
 ?>
-<a href="<?php echo '#player-modal-' . $player->id; ?>" uk-toggle class="uk-position-cover nxd-z-index-100"></a>
+<a href="<?php echo '#player-modal-' . $person->id; ?>" uk-toggle class="uk-position-cover nxd-z-index-100"></a>
 
 <!-- This is the modal -->
-<div id="<?php echo 'player-modal-' . $player->id; ?>"
-     class="nxd-players-module-modal uk-modal-full <?php echo $params->get('modal_container_classnames', ''); ?>"
+<div id="<?php echo 'player-modal-' . $person->id; ?>"
+     class="nxd-people-module-modal uk-modal-full <?php echo $params->get('modal_container_classnames', ''); ?>"
      uk-modal>
     <div class="uk-modal-dialog">
         <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
 
         <div class="uk-grid-collapse <?php echo $gridClassname; ?>" uk-grid>
             <div class="uk-cover-container <?php echo $visibilityClassname; ?>">
-	            <?php echo HTMLHelper::image($player->effective->image, 'Player Image', ['uk-cover' => 'true']) ?>
+	            <?php echo HTMLHelper::image($person->effective->image, 'Player Image', ['uk-cover' => 'true']) ?>
             </div>
             <div class="uk-position-relative" uk-height-viewport>
 
                 <div class="uk-position-relative uk-padding" uk-margin>
-					<?php echo HTMLHelper::image($player->effective->image, 'Player Image', ['class' => $imageSmallClassname, 'width' => '200', 'height' => '200']); ?>
+					<?php echo HTMLHelper::image($person->effective->image, 'Player Image', ['class' => $imageSmallClassname, 'width' => '200', 'height' => '200']); ?>
 
                     <div class="player-name-container">
                         <span class="player-name">
                             <span class="player-firstname">
-                                <?php echo $player->firstname; ?>
+                                <?php echo $person->firstname; ?>
                             </span>
                             <span class="player-lastname">
-                                <?php echo $player->lastname; ?>
+                                <?php echo $person->lastname; ?>
                             </span>
                         </span>
-                        <span class="uk-display-block uk-text-meta uk-text-uppercase uk-text-muted"><?php echo $player->effective->position; ?></span>
+                        <span class="uk-display-block uk-text-meta uk-text-uppercase uk-text-muted"><?php echo $person->effective->position; ?></span>
                     </div>
 
                     <div class="player-about">
-						<?php echo $player->about; ?>
+						<?php echo $person->about; ?>
                     </div>
 
                     <div class="player-data">
@@ -63,43 +63,44 @@ $imageSmallClassname = 'uk-display-block uk-margin-auto uk-width-3-4@s uk-hidden
                             <tbody>
                             <tr>
                                 <th>Number</th>
-                                <td><?php echo $player->effective->number;?></td>
+                                <td><?php echo $person->effective->number;?></td>
                             </tr>
                             <tr>
                                 <th>Position</th>
-                                <td><?php echo $player->effective->position;?></td>
+                                <td><?php echo $person->effective->position;?></td>
                             </tr>
+                            <?php if($person->effective->since): ?>
                             <tr>
                                 <th>Since</th>
-                                <td><?php echo HTMLHelper::date($player->effective->since, Text::_($params->get('date_format','DATE_FORMAT_LC4')));?></td>
-                            </tr>
-                            <?php if($player->height): ?>
-                            <tr>
-                                <th>Height</th>
-                                <td><?php echo $player->height;?></td>
+                                <td><?php echo HTMLHelper::date($person->effective->since, Text::_($params->get('date_format','DATE_FORMAT_LC4')));?></td>
                             </tr>
                             <?php endif; ?>
-                            <?php if($player->weight): ?>
+                            <?php if($person->height): ?>
+                            <tr>
+                                <th>Height</th>
+                                <td><?php echo $person->height;?></td>
+                            </tr>
+                            <?php endif; ?>
+                            <?php if($person->weight): ?>
                             <tr>
                                 <th>Weight</th>
-                                <td><?php echo $player->weight;?></td>
+                                <td><?php echo $person->weight;?></td>
                             </tr>
                             <?php endif; ?>
                             <!-- Customfields -->
 
-                            <?php require ModuleHelper::getLayoutPath('mod_nxdfm2_players', 'customfields_table'); ?>
-
+                            <?php include ModuleHelper::getLayoutPath('mod_nxdfm2_people', 'item-cf-table'); ?>
 
                             <!-- Customfields -->
                             </tbody>
                         </table>
 
-	                    <?php if(count($player->teams) > 1 || (count($player->teams) && !$player->teams[0]->historyHidden)): ?>
-                            <span uk-toggle="target: #<?php echo 'player-'.$player->id.'-history'?>" type="button" class="player-modal-showmore player-history-title"><?php echo Text::_('MOD_NXDFM2_PLAYER_SHOW_HISTORY')?></span>
-                            <div id="<?php echo 'player-'.$player->id.'-history'?>" hidden>
+	                    <?php if(($person->teams && count($person->teams) > 1) || (($person->teams && count($person->teams)) && !$person->teams[0]->historyHidden)): ?>
+                            <span uk-toggle="target: #<?php echo 'player-'.$person->id.'-history'?>" type="button" class="player-modal-showmore player-history-title"><?php echo Text::_('MOD_NXDFM2_PLAYER_SHOW_HISTORY')?></span>
+                            <div id="<?php echo 'player-'.$person->id.'-history'?>" hidden>
                             <table class="uk-table uk-table-striped uk-table-small">
                                 <tbody>
-		                    <?php foreach($player->teams as $team):
+		                    <?php foreach($person->teams as $team):
 			                    if($team->historyHidden) continue;
 			                    ?>
                                 <tr>
