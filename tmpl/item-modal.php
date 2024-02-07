@@ -39,7 +39,7 @@ $imageSmallClassname = 'uk-display-block uk-margin-auto uk-width-3-4@s uk-hidden
             </div>
             <div class="uk-position-relative" uk-height-viewport>
 
-                <div class="uk-position-relative uk-padding" uk-margin>
+                <div class="uk-position-relative uk-padding">
 					<?php echo HTMLHelper::image($person->effective->image, 'Player Image', ['class' => $imageSmallClassname, 'width' => '200', 'height' => '200']); ?>
 
                     <div class="player-name-container">
@@ -54,39 +54,27 @@ $imageSmallClassname = 'uk-display-block uk-margin-auto uk-width-3-4@s uk-hidden
                         <span class="uk-display-block uk-text-meta uk-text-uppercase uk-text-muted"><?php echo $person->effective->position; ?></span>
                     </div>
 
-                    <div class="player-about">
+	                <?php if( $person->about): ?>
+                    <div class="uk-margin-top player-about">
+                        <h3 class="person-about-title"><?php echo Text::_("MOD_NXDFM2_PEOPLE_ABOUT_TITLE");?></h3>
 						<?php echo $person->about; ?>
                     </div>
+                    <?php endif;?>
 
-                    <div class="player-data">
+                    <div class="uk-margin-large-top player-data">
                         <table class="uk-table uk-table-striped">
                             <tbody>
+                            <?php foreach ($person->effective->table as $row):
+                                if($row['value']):
+                            ?>
                             <tr>
-                                <th>Number</th>
-                                <td><?php echo $person->effective->number;?></td>
+                                <th><?php echo Text::_($row['label']);?></th>
+                                <td><?php echo $row['value'];?></td>
                             </tr>
-                            <tr>
-                                <th>Position</th>
-                                <td><?php echo $person->effective->position;?></td>
-                            </tr>
-                            <?php if($person->effective->since): ?>
-                            <tr>
-                                <th>Since</th>
-                                <td><?php echo HTMLHelper::date($person->effective->since, Text::_($params->get('date_format','DATE_FORMAT_LC4')));?></td>
-                            </tr>
-                            <?php endif; ?>
-                            <?php if($person->height): ?>
-                            <tr>
-                                <th>Height</th>
-                                <td><?php echo $person->height;?></td>
-                            </tr>
-                            <?php endif; ?>
-                            <?php if($person->weight): ?>
-                            <tr>
-                                <th>Weight</th>
-                                <td><?php echo $person->weight;?></td>
-                            </tr>
-                            <?php endif; ?>
+                            <?php
+                                endif;
+                            endforeach;
+                            ?>
                             <!-- Customfields -->
 
                             <?php include ModuleHelper::getLayoutPath('mod_nxdfm2_people', 'item-cf-table'); ?>
@@ -95,7 +83,7 @@ $imageSmallClassname = 'uk-display-block uk-margin-auto uk-width-3-4@s uk-hidden
                             </tbody>
                         </table>
 
-	                    <?php if(($person->teams && count($person->teams) > 1) || (($person->teams && count($person->teams)) && !$person->teams[0]->historyHidden)): ?>
+	                    <?php if((isset($person->teams) && count($person->teams) > 1) || ((isset($person->teams) && count($person->teams)) && !$person->teams[0]->historyHidden)): ?>
                             <span uk-toggle="target: #<?php echo 'player-'.$person->id.'-history'?>" type="button" class="player-modal-showmore player-history-title"><?php echo Text::_('MOD_NXDFM2_PLAYER_SHOW_HISTORY')?></span>
                             <div id="<?php echo 'player-'.$person->id.'-history'?>" hidden>
                             <table class="uk-table uk-table-striped uk-table-small">

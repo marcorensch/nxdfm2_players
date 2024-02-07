@@ -56,6 +56,30 @@
                     <option value="players">MOD_NXDFM2_PEOPLE_CONTEXT_OPT_PLAYERS</option>
                     <option value="cheerleaders">MOD_NXDFM2_PEOPLE_CONTEXT_OPT_CHEERLEADERS</option>
                 </field>
+                <field name="order_by"
+                       type="list"
+                       label="MOD_NXDFM2_PEOPLE_ORDER_BY_LABEL"
+                       description="MOD_NXDFM2_PEOPLE_ORDER_BY_DESC"
+                       default="ordering"
+                >
+                    <option value="number" showon="context:players">MOD_NXDFM2_PEOPLE_OPT_NUMBER</option>
+                    <option value="position">MOD_NXDFM2_PEOPLE_OPT_POSITION</option>
+                    <option value="lastname">MOD_NXDFM2_PEOPLE_OPT_LASTNAME</option>
+                    <option value="firstname">MOD_NXDFM2_PEOPLE_OPT_FIRSTNAME</option>
+                    <option value="ordering">MOD_NXDFM2_PEOPLE_OPT_ORDERING</option>
+                </field>
+                <field
+                        name="sort_direction"
+                        type="radio"
+                        label="MOD_NXDFM2_PEOPLE_SORT_DIR_LABEL"
+                        description="MOD_NXDFM2_PEOPLE_SORT_DIR_DESC"
+                        default="ASC"
+                        filter="word"
+                        class="btn-group"
+                >
+                    <option value="ASC">MOD_NXDFM2_PEOPLE_OPT_ASC</option>
+                    <option value="DESC">MOD_NXDFM2_PEOPLE_OPT_DESC</option>
+                </field>
                 <field name="only_current_team_positions"
                        type="radio"
                        label="MOD_NXDFM2_PEOPLE_POSITIONS_ONLY_CURRENT_TEAM_LABEL"

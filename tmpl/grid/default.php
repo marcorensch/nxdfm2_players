@@ -46,7 +46,7 @@ echo LayoutHelper::render('test');
                             <h3 class="uk-grid-small uk-flex uk-flex-middle uk-card-title <?php echo $params->get('custom_card_title_classnames', '') ?>"
                                 uk-grid>
                                 <div class="uk-width-auto player-number">
-									<?php echo $person->effective->number ?? ''; ?>
+									<?php echo $person->effective->preparedNumber ?? ''; ?>
                                 </div>
                                 <div class="uk-width-expand">
                                     <div class="player-name">

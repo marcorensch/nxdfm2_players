@@ -37,6 +37,14 @@ class CheerleadersHelper extends PeopleHelper implements PeopleInterface
 
 		$items = $model->getItems();
 
+		// Build the individual data for each player
+		foreach ($items as $person)
+		{
+			$person->effective = self::definePersonData($person, $params);
+		}
+
+		$this->sortItems($items, $params);
+
 		return $items;
 
 	}

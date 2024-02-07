@@ -23,6 +23,9 @@ use Joomla\Registry\Registry;
 
 class PlayersHelper extends PeopleHelper implements PeopleInterface
 {
+	/**
+	 * @throws \Exception
+	 */
 	public function getPeople(Registry $params, SiteApplication $app): array
 	{
 		if(!ComponentHelper::isEnabled('com_footballmanager', true))
@@ -39,72 +42,11 @@ class PlayersHelper extends PeopleHelper implements PeopleInterface
 		// Build the individual data for each player
 		foreach ($items as $player)
 		{
-			$player->effective = self::definePlayerData($player, $params);
+			$player->effective = self::definePersonData($player, $params);
 		}
+
+		$this->sortItems($items, $params);
 
 		return $items;
-	}
-
-	public static function definePlayerData(mixed $person, Registry $params): \stdClass
-	{
-		$teamId = $params->get('team_id', null);
-		$playerImage = null;
-		$playerNumber = null;
-		$playerPosition = null;
-		$since = null;
-
-		// Add HistoryHidden Attribute to all teams
-		foreach ($person->teams as $team)
-		{
-			$team->historyHidden = false;
-		}
-
-		// check if we have a custom setup for this team that is still active (no until date)
-		$customTeam = null;
-		foreach ($person->teams as $team)
-		{
-			if($team->team_id == $teamId && !$team->until)
-			{
-				$customTeam = $team;
-				$team->historyHidden = true;
-				break;
-			}
-		}
-
-		// if we have no custom team setup, use the data for the current team (if any we use the first entry)
-		if(!$customTeam)
-		{
-			foreach ($person->teams as $team)
-			{
-				if($team->team_id == $teamId)
-				{
-					$customTeam = $team;
-					$team->historyHidden = true;
-					break;
-				}
-			}
-		}
-
-		// if we have a custom team setup, use that data
-		if($customTeam)
-		{
-			$registrationId = $customTeam->registrationId;
-			$playerImage = $customTeam->image;
-			$playerNumber = $customTeam->number;
-			$playerPosition = $customTeam->position;
-			$since = $customTeam->since;
-		}
-
-		$playerImage = $playerImage ?: PeopleHelper::definePersonImage($person, $params);
-
-
-		$data  = new \stdClass();
-		$data->id = $registrationId;
-		$data->image = $playerImage;
-		$data->number = $playerNumber < 10 ? "0" . $playerNumber : $playerNumber;
-		$data->position = $playerPosition;
-		$data->since = $since;
-
-		return $data;
 	}
 }
