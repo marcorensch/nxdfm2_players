@@ -56,6 +56,16 @@
                     <option value="players">MOD_NXDFM2_PEOPLE_CONTEXT_OPT_PLAYERS</option>
                     <option value="cheerleaders">MOD_NXDFM2_PEOPLE_CONTEXT_OPT_CHEERLEADERS</option>
                 </field>
+                <field name="league_ids"
+                       showon="context:players"
+                       type="Leagues"
+                       label="MOD_NXDFM2_PEOPLE_LEAGUES_LABEL"
+                       layout="joomla.form.field.list-fancy-select"
+                       multiple="true"
+                       show_select="false"
+                       description="MOD_NXDFM2_PEOPLE_LEAGUES_DESC"
+                       default=""
+                />
                 <field name="order_by"
                        type="list"
                        label="MOD_NXDFM2_PEOPLE_ORDER_BY_LABEL"

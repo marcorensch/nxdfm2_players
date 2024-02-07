@@ -68,7 +68,7 @@ $imageSmallClassname = 'uk-display-block uk-margin-auto uk-width-3-4@s uk-hidden
                                 if($row['value']):
                             ?>
                             <tr>
-                                <th><?php echo Text::_($row['label']);?></th>
+                                <th class="uk-width-1-3"><?php echo Text::_($row['label']);?></th>
                                 <td><?php echo $row['value'];?></td>
                             </tr>
                             <?php
@@ -92,19 +92,19 @@ $imageSmallClassname = 'uk-display-block uk-margin-auto uk-width-3-4@s uk-hidden
 			                    if($team->historyHidden) continue;
 			                    ?>
                                 <tr>
-                                    <th>Team</th>
+                                    <th class="uk-width-1-3">Team</th>
                                     <td class="uk-text-bold history-team-title"><?php echo $team->title;?></td>
                                 </tr>
                                 <tr>
-                                    <th>Number</th>
+                                    <th class="uk-width-1-3">Number</th>
                                     <td class="history-team-number"><?php echo $team->number;?></td>
                                 </tr>
                                 <tr>
-                                    <th>Position</th>
+                                    <th class="uk-width-1-3">Position</th>
                                     <td class="history-team-position"><?php echo $team->position;?></td>
                                 </tr>
                                 <tr>
-                                    <th>Since / Until</th>
+                                    <th class="uk-width-1-3">Since / Until</th>
                                     <td class="history-team-since-until"><?php
 					                    if($team->since){
 						                    echo HTMLHelper::date($team->since, Text::_($params->get('date_format','DATE_FORMAT_LC4')));

@@ -22,6 +22,7 @@ class PeopleHelper
 	{
 		$model->setState('params', $app->getParams());
 		$model->setState('filter.teamId', $params->get('team_id', null));
+		$model->setState('filter.leagueIds', $params->get('league_ids', null));
 		$model->setState('filter.currentTeamOnly', $params->get('only_current_team_positions', '0'));
 		$model->setState('filter.activePositionsOnly', $params->get('only_active_positions', '1'));
 		$model->setState('params.groupByFieldGroups', $params->get('group_fields',''));
