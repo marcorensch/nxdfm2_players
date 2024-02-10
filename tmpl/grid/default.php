@@ -27,8 +27,6 @@ $wa->registerAndUseStyle('NXDPlayersGridItemCSS', 'modules/mod_nxdfm2_people/tmp
 
 $gridClassnames = GridHelper::buildGridClassnames($params);
 
-echo LayoutHelper::render('test');
-
 ?>
 
 <div class="<?php echo $gridClassnames; ?>" uk-grid>
@@ -43,19 +41,18 @@ echo LayoutHelper::render('test');
                 <div class="uk-position-bottom">
                     <div class="uk-card-body-container">
                         <div class="uk-card-body <?php echo $params->get('custom_card_content_classnames', '') ?>">
-                            <h3 class="uk-grid-small uk-flex uk-flex-middle uk-card-title <?php echo $params->get('custom_card_title_classnames', '') ?>"
-                                uk-grid>
-                                <div class="uk-width-auto player-number">
-									<?php echo $person->effective->preparedNumber ?? ''; ?>
-                                </div>
-                                <div class="uk-width-expand">
-                                    <div class="player-name">
-                                        <div class="player-firstname">
-											<?php echo $person->firstname; ?>
-                                        </div>
-                                        <div class="player-lastname">
-											<?php echo $person->lastname; ?>
-                                        </div>
+                            <?php if(isset($person->effective->preparedNumber)):?>
+                            <div class="uk-width-1-1 player-number">
+		                        <?php echo "#" . $person->effective->preparedNumber ?? ''; ?>
+                            </div>
+                            <?php endif;?>
+                            <h3 class="uk-card-title <?php echo $params->get('custom_card_title_classnames', '') ?>">
+                                <div class="player-name">
+                                    <div class="player-firstname">
+			                            <?php echo $person->firstname; ?>
+                                    </div>
+                                    <div class="player-lastname">
+			                            <?php echo $person->lastname; ?>
                                     </div>
                                 </div>
                             </h3>

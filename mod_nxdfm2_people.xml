@@ -54,6 +54,7 @@
                        class="btn-group"
                 >
                     <option value="players">MOD_NXDFM2_PEOPLE_CONTEXT_OPT_PLAYERS</option>
+                    <option value="coaches">MOD_NXDFM2_PEOPLE_CONTEXT_OPT_COACHES</option>
                     <option value="cheerleaders">MOD_NXDFM2_PEOPLE_CONTEXT_OPT_CHEERLEADERS</option>
                 </field>
                 <field name="league_ids"

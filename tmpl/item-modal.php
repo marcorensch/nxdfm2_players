@@ -24,17 +24,17 @@ $visibilityClassname = 'uk-visible@' . $breakPoint;
 $imageSmallClassname = 'uk-display-block uk-margin-auto uk-width-3-4@s uk-hidden@' . $breakPoint;
 
 ?>
-<a href="<?php echo '#player-modal-' . $person->id; ?>" uk-toggle class="uk-position-cover nxd-z-index-100"></a>
+<a href="<?php echo '#player-modal-' .  $module->id . '-' . $person->id; ?>" uk-toggle class="uk-position-cover nxd-z-index-100"></a>
 
 <!-- This is the modal -->
-<div id="<?php echo 'player-modal-' . $person->id; ?>"
+<div id="<?php echo 'player-modal-' . $module->id . '-' . $person->id; ?>"
      class="nxd-people-module-modal uk-modal-full <?php echo $params->get('modal_container_classnames', ''); ?>"
      uk-modal>
     <div class="uk-modal-dialog">
         <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
 
         <div class="uk-grid-collapse <?php echo $gridClassname; ?>" uk-grid>
-            <div class="uk-cover-container <?php echo $visibilityClassname; ?>">
+            <div class="uk-cover-container people-modal-image-container <?php echo $visibilityClassname; ?>">
 	            <?php echo HTMLHelper::image($person->effective->image, 'Player Image', ['uk-cover' => 'true']) ?>
             </div>
             <div class="uk-position-relative" uk-height-viewport>

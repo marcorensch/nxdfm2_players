@@ -22,12 +22,12 @@
 .nxd-people-module .player-number {
     font-family: "Anton Regular", serif;
     display: block;
-    font-size:4rem;
+    font-size:2rem;
 }
 
 .nxd-people-module .player-firstname {
     display: block;
-    font-size: 1.2rem;
+    font-size: .8rem;
     margin-bottom: 0;
     font-weight: 200;
 }
@@ -58,6 +58,8 @@
     font-size: 4rem;
 }
 
-.nxd-people-module-modal .player-number-effect {
-
+.nxd-people-module-modal .people-modal-image-container {
+    background: url("/modules/mod_nxdfm2_people/tmpl/assets/images/blocks-fletcher-XaGNO7bgZa8-unsplash.jpeg") no-repeat center center;
+    background-size: cover;
 }
+

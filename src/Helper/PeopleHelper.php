@@ -14,6 +14,8 @@
 
 namespace NXD\Module\FootballManagerPeople\Site\Helper;
 
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
 use Joomla\Registry\Registry;
 
 class PeopleHelper
@@ -46,17 +48,16 @@ class PeopleHelper
 	{
 		$teamId = $params->get('team_id', null);
 		$registrationId = $person->id;
-		$playerImage = null;
+		$personImage = null;
 		$playerNumber = null;
 		$preparedNumber = null;
 		$personPosition = $person->position ?? null;
 		$since = null;
-		$age = PeopleHelper::calculateAge($person->birthdate);
+		$age = isset($person->birthdate) ? PeopleHelper::calculateAge($person->birthdate) : null;
 
 		// check if we have a custom setup for this team that is still active (no until date)
 		if(isset($person->teams))
 		{
-
 			// Add HistoryHidden Attribute to all teams
 			foreach ($person->teams as $team)
 			{
@@ -93,8 +94,8 @@ class PeopleHelper
 			if ($customTeam)
 			{
 				$registrationId = $customTeam->registrationId;
-				$playerImage    = $customTeam->image;
-				$playerNumber   = $customTeam->number;
+				$personImage    = $customTeam->image;
+				$playerNumber   = isset($customTeam->number) ?? null;
 				$personPosition = $customTeam->position;
 				$since          = $customTeam->since;
 			}
@@ -102,7 +103,7 @@ class PeopleHelper
 
 		$data  = new \stdClass();
 		$data->id = $registrationId;
-		$data->image = $playerImage ?: PeopleHelper::definePersonImage($person, $params);
+		$data->image = $personImage ?: PeopleHelper::definePersonImage($person, $params);
 		$data->position = $personPosition;
 		if($playerNumber)
 		{
@@ -114,10 +115,10 @@ class PeopleHelper
 		$data->table = array();
 		if($preparedNumber) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_NUMBER_LABEL", 'value' => $preparedNumber);
 		if($personPosition) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_POSITION_LABEL", 'value' => $personPosition);
-		if($since) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_SINCE_LABEL", 'value' => $since);
+		if($since) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_SINCE_LABEL", 'value' => HTMLHelper::date($since, 'Y'));
 		if($age > 0) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_AGE_LABEL", 'value' => $age);
-		if($person->height) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_HEIGHT_LABEL", 'value' => $person->height);
-		if($person->weight) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_WEIGHT_LABEL", 'value' => $person->weight);
+		if(isset($person->height) && $person->height) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_HEIGHT_LABEL", 'value' => $person->height);
+		if(isset($person->weight) && $person->weight) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_WEIGHT_LABEL", 'value' => $person->weight);
 
 		return $data;
 	}
@@ -131,9 +132,9 @@ class PeopleHelper
 			// order the array of items by the value of the key number
 			if($params->get('sort_direction','ASC') === 'ASC')
 			{
-				usort($items, fn($a, $b) => strcmp($a->effective->$field, $b->effective->$field));
+				usort($items, fn($a, $b) => strnatcmp($a->effective->$field, $b->effective->$field));
 			}else{
-				usort($items, fn($a, $b) => strcmp($b->effective->$field, $a->effective->$field));
+				usort($items, fn($a, $b) => strnatcmp($b->effective->$field, $a->effective->$field));
 			}
 		}
 	}
