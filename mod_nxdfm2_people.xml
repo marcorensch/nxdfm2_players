@@ -135,6 +135,11 @@
                     >
                         <option value="grid">MOD_NXDFM2_PEOPLE_TEMPLATE_OPTION_GRID</option>
                     </field>
+                    <field name="position_in_overview" label="MOD_NXDFM2_PEOPLE_SHOW_POSITION_IN_GRID_LABEL" description="MOD_NXDFM2_PEOPLE_SHOW_POSITION_IN_GRID_DESC" showon="template:grid" type="list" default="">
+                        <option value="">JNO</option>
+                        <option value="top">MOD_NXDFM2_PEOPLE_OPT_TOP</option>
+                        <option value="bottom">MOD_NXDFM2_PEOPLE_OPT_BOTTOM</option>
+                    </field>
                 </fieldset>
                 <fieldset name="columns" class="col-lg-6">
 

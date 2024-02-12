@@ -7,7 +7,6 @@
     padding: 20px 10px 30px;
     background: #fff;
     position: relative;
-    z-index: 2;
 }
 
 .nxd-people-module .uk-card-body h3 {
@@ -38,28 +37,96 @@
     line-height: 2rem;
 }
 
+.nxd-people-module-modal .person-position{
+    font-family: "Bebas Neue Regular", serif;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+}
+
 /* Modal */
 
 .nxd-people-module-modal .nxd-z-index-100 {
     z-index: 100;
 }
 
-.nxd-people-module-modal .player-history-title {
+.nxd-people-module-modal img.nxd-modal-player-image-large {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: absolute;
+    bottom: 0;
+}
+
+.nxd-people-module-modal .player-modal-title {
     user-select: none;
 }
 
-.nxd-people-module-modal .player-name .player-firstname {
-    font-family: "Bebas Neue Regular", serif;
-    font-size: 4rem;
+.nxd-people-module-modal .uk-modal-dialog {
+    border-radius: 12px;
+    overflow: hidden;
 }
 
+.nxd-people-module-modal .player-name {
+    margin-top: 1rem;
+}
+.nxd-people-module-modal .player-name .player-firstname,
 .nxd-people-module-modal .player-name .player-lastname {
     font-family: "Bebas Neue Regular", serif;
     font-size: 4rem;
+    line-height: 3.5rem;
 }
 
 .nxd-people-module-modal .people-modal-image-container {
     background: url("/modules/mod_nxdfm2_people/tmpl/assets/images/blocks-fletcher-XaGNO7bgZa8-unsplash.jpeg") no-repeat center center;
     background-size: cover;
+}
+
+.nxd-people-module-modal .person-modal-title {
+    font-family: "Bebas Neue Regular", serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    margin-top:0;
+    color: #5e5e5e;
+}
+
+.nxd-people-module-modal .nxd-sponsor-logo {
+    display: block;
+    text-align: center;
+    width: 50px;
+    max-height: 50px;
+}
+
+.nxd-people-module-modal .nxd-player-information-container .nxd-switcher-content {
+    height: 500px;
+    position: relative;
+    overflow-y: scroll;
+    /* Hide Scrollbars */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+.nxd-people-module-modal .nxd-player-subnav {
+    margin-top:20px;
+
+    li {
+         a{
+             text-decoration: none;
+             border-radius: 8px;
+
+             &:hover {
+                 color: #eaeaea;
+                 background: #313131;
+             }
+         }
+    }
+    li.uk-active {
+        a{
+            color: #eaeaea;
+            background: #101010;
+        }
+    }
 }
 

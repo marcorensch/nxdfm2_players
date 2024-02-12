@@ -23,21 +23,23 @@ $gridClassname       = 'uk-child-width-1-2@' . $breakPoint;
 $visibilityClassname = 'uk-visible@' . $breakPoint;
 $imageSmallClassname = 'uk-display-block uk-margin-auto uk-width-3-4@s uk-hidden@' . $breakPoint;
 
+$hasHistory = (isset($person->teams) && count($person->teams) > 1) || ((isset($person->teams) && count($person->teams)) && !$person->teams[0]->historyHidden);
+
 ?>
 <a href="<?php echo '#player-modal-' .  $module->id . '-' . $person->id; ?>" uk-toggle class="uk-position-cover nxd-z-index-100"></a>
 
 <!-- This is the modal -->
 <div id="<?php echo 'player-modal-' . $module->id . '-' . $person->id; ?>"
-     class="nxd-people-module-modal uk-modal-full <?php echo $params->get('modal_container_classnames', ''); ?>"
+     class="nxd-people-module-modal uk-modal-container uk-flex-top <?php echo $params->get('modal_container_classnames', ''); ?>"
      uk-modal>
-    <div class="uk-modal-dialog">
+    <div class="uk-modal-dialog uk-margin-auto-vertical">
         <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
 
         <div class="uk-grid-collapse <?php echo $gridClassname; ?>" uk-grid>
             <div class="uk-cover-container people-modal-image-container <?php echo $visibilityClassname; ?>">
-	            <?php echo HTMLHelper::image($person->effective->image, 'Player Image', ['uk-cover' => 'true']) ?>
+	            <?php echo HTMLHelper::image($person->effective->image, 'Player Image', ['class' => 'nxd-modal-player-image-large']) ?>
             </div>
-            <div class="uk-position-relative" uk-height-viewport>
+            <div class="uk-position-relative">
 
                 <div class="uk-position-relative uk-padding">
 					<?php echo HTMLHelper::image($person->effective->image, 'Player Image', ['class' => $imageSmallClassname, 'width' => '200', 'height' => '200']); ?>
@@ -54,74 +56,46 @@ $imageSmallClassname = 'uk-display-block uk-margin-auto uk-width-3-4@s uk-hidden
                         <span class="uk-display-block uk-text-meta uk-text-uppercase uk-text-muted"><?php echo $person->effective->position; ?></span>
                     </div>
 
-	                <?php if( $person->about): ?>
-                    <div class="uk-margin-top player-about">
-                        <h3 class="person-about-title"><?php echo Text::_("MOD_NXDFM2_PEOPLE_ABOUT_TITLE");?></h3>
-						<?php echo $person->about; ?>
-                    </div>
-                    <?php endif;?>
+                    <div class="nxd-player-information-container">
+                    <!-- Tabs -->
+                    <ul class="uk-subnav uk-subnav-pill nxd-player-subnav" uk-switcher>
+	                    <?php if( $person->about): ?>
+                        <li><a href="#"><?php echo Text::_("MOD_NXDFM2_PEOPLE_ABOUT_TITLE");?></a></li>
+	                    <?php endif;?>
+                        <li><a href="#"><?php echo Text::_("MOD_NXDFM2_PEOPLE_INFORMATION_TITLE");?></a></li>
+                        <?php if($hasHistory): ?>
+                        <li><a href="#"><?php echo Text::_("MOD_NXDFM2_PEOPLE_HISTORY_TITLE");?></a></li>
+                        <?php endif; ?>
+	                    <?php if(isset($person->sponsors) && $person->sponsors): ?>
+                        <li><a href="#"><?php echo Text::_("MOD_NXDFM2_PEOPLE_SPONSORS_TITLE");?></a></li>
+                        <?php endif; ?>
+                    </ul>
 
-                    <div class="uk-margin-large-top player-data">
-                        <table class="uk-table uk-table-striped">
-                            <tbody>
-                            <?php foreach ($person->effective->table as $row):
-                                if($row['value']):
-                            ?>
-                            <tr>
-                                <th class="uk-width-1-3"><?php echo Text::_($row['label']);?></th>
-                                <td><?php echo $row['value'];?></td>
-                            </tr>
-                            <?php
-                                endif;
-                            endforeach;
-                            ?>
-                            <!-- Customfields -->
-
-                            <?php include ModuleHelper::getLayoutPath('mod_nxdfm2_people', 'item-cf-table'); ?>
-
-                            <!-- Customfields -->
-                            </tbody>
-                        </table>
-
-	                    <?php if((isset($person->teams) && count($person->teams) > 1) || ((isset($person->teams) && count($person->teams)) && !$person->teams[0]->historyHidden)): ?>
-                            <span uk-toggle="target: #<?php echo 'player-'.$person->id.'-history'?>" type="button" class="player-modal-showmore player-history-title"><?php echo Text::_('MOD_NXDFM2_PLAYER_SHOW_HISTORY')?></span>
-                            <div id="<?php echo 'player-'.$person->id.'-history'?>" hidden>
-                            <table class="uk-table uk-table-striped uk-table-small">
-                                <tbody>
-		                    <?php foreach($person->teams as $team):
-			                    if($team->historyHidden) continue;
-			                    ?>
-                                <tr>
-                                    <th class="uk-width-1-3">Team</th>
-                                    <td class="uk-text-bold history-team-title"><?php echo $team->title;?></td>
-                                </tr>
-                                <tr>
-                                    <th class="uk-width-1-3">Number</th>
-                                    <td class="history-team-number"><?php echo $team->number;?></td>
-                                </tr>
-                                <tr>
-                                    <th class="uk-width-1-3">Position</th>
-                                    <td class="history-team-position"><?php echo $team->position;?></td>
-                                </tr>
-                                <tr>
-                                    <th class="uk-width-1-3">Since / Until</th>
-                                    <td class="history-team-since-until"><?php
-					                    if($team->since){
-						                    echo HTMLHelper::date($team->since, Text::_($params->get('date_format','DATE_FORMAT_LC4')));
-					                    }
-					                    if($team->until)
-					                    {
-						                    echo ' - ' . HTMLHelper::date($team->until, Text::_($params->get('date_format', 'DATE_FORMAT_LC4')));
-					                    }
-					                    ?></td>
-                                </tr>
-		                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                            </div>
+                    <!-- Switcher Content -->
+                    <ul class="uk-switcher nxd-switcher-content">
+	                    <?php if( $person->about): ?>
+                            <li>
+                                <div class="uk-margin-top player-about">
+                                    <h3 class="person-modal-title person-about-title"><?php echo Text::_("MOD_NXDFM2_PEOPLE_ABOUT_TITLE");?></h3>
+				                    <?php echo $person->about; ?>
+                                </div>
+                            </li>
+	                    <?php endif;?>
+                        <li>
+	                        <?php include ModuleHelper::getLayoutPath('mod_nxdfm2_people', 'item-datatables'); ?>
+                        </li>
+                        <?php if($hasHistory): ?>
+                        <li>
+                            <?php include ModuleHelper::getLayoutPath('mod_nxdfm2_people', 'item-history'); ?>
+                        </li>
+                        <?php endif; ?>
+	                    <?php if(isset($person->sponsors) && $person->sponsors): ?>
+                        <li>
+	                        <?php include ModuleHelper::getLayoutPath('mod_nxdfm2_people', 'item-sponsors'); ?>
+                        </li>
 	                    <?php endif; ?>
+                    </ul>
                     </div>
-
                 </div>
 
             </div>

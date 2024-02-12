@@ -95,7 +95,7 @@ class PeopleHelper
 			{
 				$registrationId = $customTeam->registrationId;
 				$personImage    = $customTeam->image;
-				$playerNumber   = isset($customTeam->number) ?? null;
+				$playerNumber   = $customTeam->number;
 				$personPosition = $customTeam->position;
 				$since          = $customTeam->since;
 			}
@@ -105,10 +105,10 @@ class PeopleHelper
 		$data->id = $registrationId;
 		$data->image = $personImage ?: PeopleHelper::definePersonImage($person, $params);
 		$data->position = $personPosition;
-		if($playerNumber)
+		if($playerNumber !== null)
 		{
 			$data->number = $playerNumber;
-			$preparedNumber = $playerNumber < 10 ? "0" . $playerNumber : $playerNumber;
+			$preparedNumber = (int) $playerNumber < 10 ? "0" . $playerNumber : $playerNumber;
 			$data->preparedNumber = $preparedNumber;
 		}
 
@@ -117,6 +117,7 @@ class PeopleHelper
 		if($personPosition) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_POSITION_LABEL", 'value' => $personPosition);
 		if($since) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_SINCE_LABEL", 'value' => HTMLHelper::date($since, 'Y'));
 		if($age > 0) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_AGE_LABEL", 'value' => $age);
+		if(isset($person->country)) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_COUNTRY_LABEL", 'value' => $person->country);
 		if(isset($person->height) && $person->height) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_HEIGHT_LABEL", 'value' => $person->height);
 		if(isset($person->weight) && $person->weight) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_WEIGHT_LABEL", 'value' => $person->weight);
 

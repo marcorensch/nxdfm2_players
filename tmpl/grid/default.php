@@ -41,6 +41,11 @@ $gridClassnames = GridHelper::buildGridClassnames($params);
                 <div class="uk-position-bottom">
                     <div class="uk-card-body-container">
                         <div class="uk-card-body <?php echo $params->get('custom_card_content_classnames', '') ?>">
+	                        <?php if($params->get('position_in_overview','') === "top"):?>
+                                <div class="uk-width-1-1 person-position">
+			                        <?php echo $person->effective->position ?? ''; ?>
+                                </div>
+	                        <?php endif;?>
                             <?php if(isset($person->effective->preparedNumber)):?>
                             <div class="uk-width-1-1 player-number">
 		                        <?php echo "#" . $person->effective->preparedNumber ?? ''; ?>
@@ -56,12 +61,19 @@ $gridClassnames = GridHelper::buildGridClassnames($params);
                                     </div>
                                 </div>
                             </h3>
+	                        <?php if($params->get('position_in_overview','') === "bottom"):?>
+                                <div class="uk-width-1-1 person-position">
+			                        <?php echo $person->effective->position ?? ''; ?>
+                                </div>
+	                        <?php endif;?>
                         </div>
                     </div>
                 </div>
+
 	            <?php if($params->get('show_modal', 1)):
 		            include ModuleHelper::getLayoutPath('mod_nxdfm2_people', 'item-modal');
 	            endif; ?>
+
             </div>
         </div>
 	<?php endforeach; ?>
