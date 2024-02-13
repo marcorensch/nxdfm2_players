@@ -21,6 +21,8 @@
     <languages>
         <language tag="en-GB">language/en-GB/en-GB.mod_nxdfm2_people.ini</language>
         <language tag="en-GB">language/en-GB/en-GB.mod_nxdfm2_people.sys.ini</language>
+        <language tag="de-DE">language/de-DE/de-DE.mod_nxdfm2_people.ini</language>
+        <language tag="de-DE">language/de-DE/de-DE.mod_nxdfm2_people.sys.ini</language>
     </languages>
 
     <!-- Update servers -->
