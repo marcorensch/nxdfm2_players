@@ -35,6 +35,16 @@ if ($params->get('load_uikit', 1))
 
 $wa->registerAndUseStyle('NXDPlayersCSS', 'modules/mod_nxdfm2_people/tmpl/assets/css/module.css');
 
+$wa->registerAndUseStyle('NXDPlayersGridItemCSS', 'modules/mod_nxdfm2_people/tmpl/assets/css/grid.css');
+$paddingBottomPercent = (100 / explode(":", $params->get('preview_img_aspect_ratio', '4:3'))[0]) * explode(":", $params->get('preview_img_aspect_ratio', '4:3'))[1];
+$wa->addInlineStyle('
+    #nxd-people-module-'.$module->id.' .nxd-people-image-container {
+        width: 100%;
+        height: 0;
+        padding-bottom: '.$paddingBottomPercent.'%;
+    }'
+);
+
 if ($params->get('debug', 0)): ?>
     <div class="uk-section">
         <div class="uk-container">
@@ -53,6 +63,6 @@ if ($params->get('debug', 0)): ?>
     </div>
 <?php endif; ?>
 <?php
-echo '<div class="nxd-people-module ' . $params->get('moduleclass_container_sfx', '') . '">';
+echo '<div id="nxd-people-module-'.$module->id.'" class="nxd-people-module ' . $params->get('moduleclass_container_sfx', '') . '">';
     include ModuleHelper::getLayoutPath('mod_nxdfm2_people' , $params->get('layout', 'grid') . '/default');
 echo '</div>';

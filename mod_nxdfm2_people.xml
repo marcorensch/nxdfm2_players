@@ -137,6 +137,15 @@
                     >
                         <option value="grid">MOD_NXDFM2_PEOPLE_TEMPLATE_OPTION_GRID</option>
                     </field>
+                    <field
+                            name="preview_img_aspect_ratio"
+                            type="text"
+                            label="MOD_NXDFM2_PEOPLE_PREVIEW_IMG_ASPECT_RATIO_LABEL"
+                            description="MOD_NXDFM2_PEOPLE_PREVIEW_IMG_ASPECT_RATIO_DESC"
+                            default="3:4"
+                            pattern="^\d+:\d+$"
+                            hint="MOD_NXDFM2_PEOPLE_PREVIEW_IMG_ASPECT_RATIO_HINT"
+                    />
                     <field name="position_in_overview" label="MOD_NXDFM2_PEOPLE_SHOW_POSITION_IN_GRID_LABEL" description="MOD_NXDFM2_PEOPLE_SHOW_POSITION_IN_GRID_DESC" showon="template:grid" type="list" default="">
                         <option value="">JNO</option>
                         <option value="top">MOD_NXDFM2_PEOPLE_OPT_TOP</option>
