@@ -60,7 +60,7 @@
                     <option value="cheerleaders">MOD_NXDFM2_PEOPLE_CONTEXT_OPT_CHEERLEADERS</option>
                 </field>
                 <field name="league_ids"
-                       showon="context:players"
+                       showon="context:players,coaches"
                        type="Leagues"
                        label="MOD_NXDFM2_PEOPLE_LEAGUES_LABEL"
                        layout="joomla.form.field.list-fancy-select"
