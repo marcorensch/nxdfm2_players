@@ -46,76 +46,39 @@ class PeopleHelper
 	 */
 	public static function definePersonData(mixed $person, Registry $params): \stdClass
 	{
+		$data  = new \stdClass();
 		$teamId = $params->get('team_id', null);
-		$registrationId = $person->id;
-		$personImage = null;
-		$playerNumber = null;
 		$preparedNumber = null;
-		$personPosition = $person->position ?? null;
-		$since = null;
 		$age = isset($person->birthdate) ? PeopleHelper::calculateAge($person->birthdate) : null;
 
 		// check if we have a custom setup for this team that is still active (no until date)
 		if(isset($person->teams))
 		{
-			// Add HistoryHidden Attribute to all teams
-			foreach ($person->teams as $team)
-			{
-				$team->historyHidden = false;
-			}
+			$activeTeams = array_filter($person->teams, fn($team) => ($team->team_id == $teamId && !$team->until));
+			$positionsCombined = implode(', ', array_map(fn($team) => $team->position, $activeTeams));
+			$effectiveTeamData = array_shift($activeTeams);
+			// A player might be active on multiple positions - merge them
+			$effectiveTeamData->positionsCombined = $positionsCombined;
 
-			$customTeam = null;
+			$data->history = array_filter($person->teams, fn($team) => $team->until);
 
-			foreach ($person->teams as $team)
-			{
-				if ($team->team_id == $teamId && !$team->until)
-				{
-					$customTeam          = $team;
-					$team->historyHidden = true;
-					break;
-				}
-			}
-
-			// if we have no custom team setup, use the data for the current team (if any we use the first entry)
-			if (!$customTeam)
-			{
-				foreach ($person->teams as $team)
-				{
-					if ($team->team_id == $teamId)
-					{
-						$customTeam          = $team;
-						$team->historyHidden = true;
-						break;
-					}
-				}
-			}
-
-			// if we have a custom team setup, use that data
-			if ($customTeam)
-			{
-				$registrationId = $customTeam->registrationId;
-				$personImage    = $customTeam->image;
-				$playerNumber   = $customTeam->number;
-				$personPosition = $customTeam->position;
-				$since          = $customTeam->since;
-			}
 		}
 
-		$data  = new \stdClass();
-		$data->id = $registrationId;
-		$data->image = $personImage ?: PeopleHelper::definePersonImage($person, $params);
-		$data->position = $personPosition;
-		if($playerNumber !== null)
+		$data->id = $effectiveTeamData->registrationId;
+		$data->image = $effectiveTeamData->image ?: PeopleHelper::definePersonImage($person, $params);
+		$data->position = $effectiveTeamData->positionsCombined;
+
+		if($effectiveTeamData->number !== null)
 		{
-			$data->number = $playerNumber;
-			$preparedNumber = (int) $playerNumber < 10 ? "0" . $playerNumber : $playerNumber;
+			$data->number = $effectiveTeamData->number;
+			$preparedNumber = (int) $effectiveTeamData->number < 10 ? "0" . $effectiveTeamData->number : $effectiveTeamData->number;
 			$data->preparedNumber = $preparedNumber;
 		}
 
 		$data->table = array();
 		if($preparedNumber) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_NUMBER_LABEL", 'value' => $preparedNumber);
-		if($personPosition) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_POSITION_LABEL", 'value' => $personPosition);
-		if($since) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_SINCE_LABEL", 'value' => HTMLHelper::date($since, 'Y'));
+		if($effectiveTeamData->positionsCombined) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_POSITION_LABEL", 'value' => $effectiveTeamData->positionsCombined);
+		if($effectiveTeamData->since) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_SINCE_LABEL", 'value' => HTMLHelper::date($effectiveTeamData->since, 'Y'));
 		if($age > 0) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_AGE_LABEL", 'value' => $age);
 		if(isset($person->country)) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_COUNTRY_LABEL", 'value' => $person->country);
 		if(isset($person->height) && $person->height) $data->table[] = array('label' => "MOD_NXDFM2_PEOPLE_HEIGHT_LABEL", 'value' => $person->height);

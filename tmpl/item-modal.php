@@ -23,7 +23,7 @@ $gridClassname       = 'uk-child-width-1-2@' . $breakPoint;
 $visibilityClassname = 'uk-visible@' . $breakPoint;
 $imageSmallClassname = 'uk-display-block uk-margin-auto uk-width-3-4@s uk-hidden@' . $breakPoint;
 
-$hasHistory = (isset($person->teams) && count($person->teams) > 1) || ((isset($person->teams) && count($person->teams)) && !$person->teams[0]->historyHidden);
+$hasHistory = (isset($person->effective->history) && count($person->effective->history));
 
 ?>
 <a href="<?php echo '#player-modal-' .  $module->id . '-' . $person->id; ?>" uk-toggle class="uk-position-cover nxd-z-index-100"></a>
