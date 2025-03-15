@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6354ab5d-97db-42e1-8b0a-abfbf1c49a6e" name="Changes" comment="Added Media Folders and main js and css">
+    <list default="true" id="6354ab5d-97db-42e1-8b0a-abfbf1c49a6e" name="Changes" comment="Raised Version to 2.1.0&#10;Added Options for Background Image in Overview and Modal for the player pictures.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/language/de-DE/de-DE.mod_nxdfm2_people.ini" beforeDir="false" afterPath="$PROJECT_DIR$/language/de-DE/de-DE.mod_nxdfm2_people.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/language/en-GB/en-GB.mod_nxdfm2_people.ini" beforeDir="false" afterPath="$PROJECT_DIR$/language/en-GB/en-GB.mod_nxdfm2_people.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mod_nxdfm2_people.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mod_nxdfm2_people.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +78,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742048906693</updated>
-      <workItem from="1742048907724" duration="882000" />
+      <workItem from="1742048907724" duration="980000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed  Local Dev Bug">
       <option name="closed" value="true" />
@@ -98,7 +96,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742049555334</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Raised Version to 2.1.0&#10;Added Options for Background Image in Overview and Modal for the player pictures.">
+      <option name="closed" value="true" />
+      <created>1742049820499</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1742049820499</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,6 +113,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fixed  Local Dev Bug" />
     <MESSAGE value="Added Media Folders and main js and css" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Media Folders and main js and css" />
+    <MESSAGE value="Raised Version to 2.1.0&#10;Added Options for Background Image in Overview and Modal for the player pictures." />
+    <option name="LAST_COMMIT_MESSAGE" value="Raised Version to 2.1.0&#10;Added Options for Background Image in Overview and Modal for the player pictures." />
   </component>
 </project>
