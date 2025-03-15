@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+  "name": "mod_nxdfm2_people",
+  "version": "2.0.0",
+  "description": "NXD FootballManager 2 People Module Assets for Joomla!",
+  "license": "GPL-2.0-or-later",
+  "assets": [
+    {
+      "name":"mod_nxdfm2_people.js.main",
+      "type": "style",
+      "uri": "mod_nxdfm2_people/main.js",
+      "dependencies": [
+        "core"
+      ],
+      "attributes": {
+        "defer": true
+      }
+    },
+    {
+      "name":"mod_nxdfm2_people.css.main",
+      "type": "style",
+      "uri": "mod_nxdfm2_people/main.css"
+    }
+  ]
+}

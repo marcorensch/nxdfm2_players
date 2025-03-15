@@ -18,6 +18,13 @@
         <folder>tmpl</folder>
     </files>
 
+    <!-- Media files -->
+    <media folder="media/mod_nxdfm2_people" destination="mod_nxdfm2_people">
+        <folder>js</folder>
+        <folder>css</folder>
+        <filename>joomla.asset.json</filename>
+    </media>
+
     <languages>
         <language tag="en-GB">language/en-GB/en-GB.mod_nxdfm2_people.ini</language>
         <language tag="en-GB">language/en-GB/en-GB.mod_nxdfm2_people.sys.ini</language>
@@ -117,7 +124,6 @@
                        description="MOD_NXDFM2_PEOPLE_FALLBACK_IMG_DES"/>
             </fieldset>
             <fieldset name="nxdfm2_people_display" class="flexbox">
-
                 <fieldset name="layout">
                     <field name="load_uikit"
                            type="radio"
@@ -151,6 +157,12 @@
                         <option value="top">MOD_NXDFM2_PEOPLE_OPT_TOP</option>
                         <option value="bottom">MOD_NXDFM2_PEOPLE_OPT_BOTTOM</option>
                     </field>
+
+                    <field name="overview_bg"
+                           type="image"
+                           label="MOD_NXDFM2_PEOPLE_OVERVIEW_BACKGROUND_LABEL"
+                           description="MOD_NXDFM2_PEOPLE_OVERVIEW_BACKGROUND_DESCRIPTION"
+                    />
                 </fieldset>
                 <fieldset name="columns" class="col-lg-6">
 
@@ -237,7 +249,6 @@
                     </field>
 
                 </fieldset>
-
                 <fieldset name="gaps">
                     <field name="grid_column_gap"
                            showon="template:grid"
@@ -267,7 +278,6 @@
 
                 </fieldset>
                 <fieldset name="alignment">
-
                     <field name="grid_alignment"
                            showon="template:grid"
                            label="MOD_NXDFM2_PEOPLE_GRID_ALIGNMENT_LABEL"
@@ -328,7 +338,6 @@
                         <option value="right">MOD_NXDFM2_PEOPLE_OPT_RIGHT_LABEL</option>
                     </field>
                 </fieldset>
-
                 <fieldset name="item_options">
                     <field name="show_modal"
                            label="MOD_NXDFM2_PEOPLE_ENABLE_DETAILS_LABEL"
@@ -371,7 +380,6 @@
                            multiple="true"
                     />
                 </fieldset>
-
                 <fieldset name="custom_css">
                     <field name="custom_card_classnames"
                            showon="template:grid"
