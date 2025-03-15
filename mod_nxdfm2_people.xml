@@ -159,7 +159,7 @@
                     </field>
 
                     <field name="overview_bg"
-                           type="image"
+                           type="media"
                            label="MOD_NXDFM2_PEOPLE_OVERVIEW_BACKGROUND_LABEL"
                            description="MOD_NXDFM2_PEOPLE_OVERVIEW_BACKGROUND_DESCRIPTION"
                     />
@@ -380,7 +380,7 @@
                            multiple="true"
                     />
                     <field name="modal_img_bg"
-                           type="image"
+                           type="media"
                            label="MOD_NXDFM2_PEOPLE_MODAL_IMG_BACKGROUND_LABEL"
                            description="MOD_NXDFM2_PEOPLE_MODAL_IMG_BACKGROUND_DESCRIPTION"
                     />
