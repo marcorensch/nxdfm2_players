@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6354ab5d-97db-42e1-8b0a-abfbf1c49a6e" name="Changes" comment="changed deployment preferences">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="6354ab5d-97db-42e1-8b0a-abfbf1c49a6e" name="Changes" comment="Added Background Image for Player Grid View in template">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmpl/assets/css/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/tmpl/assets/css/grid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmpl/grid/default.php" beforeDir="false" afterPath="$PROJECT_DIR$/tmpl/grid/default.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tmpl/item-modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/tmpl/item-modal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmpl/item-sponsor.php" beforeDir="false" afterPath="$PROJECT_DIR$/tmpl/item-sponsor.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +95,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742048906693</updated>
-      <workItem from="1742048907724" duration="1970000" />
+      <workItem from="1742048907724" duration="2565000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed  Local Dev Bug">
       <option name="closed" value="true" />
@@ -139,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742049934553</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added Background Image for Player Grid View in template">
+      <option name="closed" value="true" />
+      <created>1742050937966</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1742050937966</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,7 +157,8 @@
     <MESSAGE value="Raised Version to 2.1.0&#10;Added Options for Background Image in Overview and Modal for the player pictures." />
     <MESSAGE value="Fixed field type for the image" />
     <MESSAGE value="changed deployment preferences" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed deployment preferences" />
+    <MESSAGE value="Added Background Image for Player Grid View in template" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Background Image for Player Grid View in template" />
   </component>
   <component name="WordPressConfiguration">
     <wordpressPath />

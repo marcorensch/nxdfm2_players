@@ -12,9 +12,7 @@
  *
  */
 
-use Joomla\CMS\Helper\ModuleHelper;
 use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Language\Text;
 
 defined('_JEXEC') or die;
 
@@ -23,7 +21,7 @@ $hoverBoxShadowCls = $sponsor->website ? 'uk-box-shadow-hover-large' : '';
 ?>
 
 
-<div class="uk-card uk-card-default uk-card-body uk-card-small uk-width-1-1 uk-width-4-5@m uk-position-relative uk-margin-auto <?php echo $hoverBoxShadowCls;?>">
+<div class="uk-card uk-card-default uk-card-body uk-card-small uk-width-1-1 uk-position-relative uk-margin-auto <?php echo $hoverBoxShadowCls;?>">
     <div class="uk-flex uk-flex-middle uk-grid-small">
         <?php
         echo '<div class="nxd-sponsor-logo">';

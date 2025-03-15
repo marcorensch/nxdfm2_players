@@ -64,6 +64,7 @@ $hasHistory = (isset($person->effective->history) && count($person->effective->h
 
                     <div class="nxd-player-information-container">
                         <!-- Tabs -->
+                        <?php if($person->about || $hasHistory || isset($person->sponsors) && $person->sponsors): ?>
                         <ul class="uk-subnav uk-subnav-pill nxd-player-subnav" uk-switcher>
 							<?php if ($person->about): ?>
                                 <li><a href="#"><?php echo Text::_("MOD_NXDFM2_PEOPLE_ABOUT_TITLE"); ?></a></li>
@@ -101,6 +102,11 @@ $hasHistory = (isset($person->effective->history) && count($person->effective->h
                                 </li>
 							<?php endif; ?>
                         </ul>
+                        <?php else: ?>
+                            <div style="min-height: 600px;">
+	                            <?php include ModuleHelper::getLayoutPath('mod_nxdfm2_people', 'item-datatables'); ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
 
