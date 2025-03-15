@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="5aa91cf4-8d0c-4394-9ed8-6eb76bd6140c" name="Joomla 4" url="http://localhost">
-        <fileTransfer mountedRoot="$USER_HOME$/Sites/joomla4.site" accessType="MOUNT" port="0" />
+      <webServer id="63989a54-44f4-4520-8a78-858231b68c5b" name="Broncos_Local" url="http://localhost">
+        <fileTransfer mountedRoot="$USER_HOME$/Sites/broncos.localhost" accessType="MOUNT" port="0" />
       </webServer>
     </option>
   </component>

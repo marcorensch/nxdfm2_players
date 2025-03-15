@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="Joomla 4" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false">
-    <option name="confirmBeforeUploading" value="false" />
+  <component name="PublishConfigData" serverName="Broncos_Local" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
-      <paths name="Joomla 4">
+      <paths name="Broncos_Local">
         <serverdata>
           <mappings>
-            <mapping deploy="/modules/mod_nxdfm2_players" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="modules/mod_nxdfm2_people" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="language" local="$PROJECT_DIR$/language" web="/" />
+            <mapping deploy="media" local="$PROJECT_DIR$/media" web="/" />
           </mappings>
         </serverdata>
       </paths>
