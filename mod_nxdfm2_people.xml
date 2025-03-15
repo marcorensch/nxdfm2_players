@@ -8,7 +8,7 @@
     <copyright>Copyright ©2023 by nx-designs</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <namespace path="src">NXD\Module\FootballManagerPeople</namespace>
-    <version>2.0.0</version>
+    <version>2.1.0</version>
     <description><![CDATA[MOD_NXDFM2_PEOPLE_XML_DESCRIPTION]]></description>
 
     <files>
@@ -378,6 +378,11 @@
                            label="MOD_NXDFM2_PEOPLE_GROUPED_CUSTOMFIELDS_LABEL"
                            description="MOD_NXDFM2_PEOPLE_GROUPED_CUSTOMFIELDS_DESC"
                            multiple="true"
+                    />
+                    <field name="modal_img_bg"
+                           type="image"
+                           label="MOD_NXDFM2_PEOPLE_MODAL_IMG_BACKGROUND_LABEL"
+                           description="MOD_NXDFM2_PEOPLE_MODAL_IMG_BACKGROUND_DESCRIPTION"
                     />
                 </fieldset>
                 <fieldset name="custom_css">

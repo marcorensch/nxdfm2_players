@@ -4,22 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6354ab5d-97db-42e1-8b0a-abfbf1c49a6e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/media/mod_nxdfm2_people/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/mod_nxdfm2_people/joomla.asset.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/mod_nxdfm2_people/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/includes/PHP Class Doc Comment.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/includes/PHP File Header.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/includes/PHP Function Doc Comment.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/includes/PHP Property Doc Comment.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/nxdfm2_people.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+    <list default="true" id="6354ab5d-97db-42e1-8b0a-abfbf1c49a6e" name="Changes" comment="Added Media Folders and main js and css">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/de-DE/de-DE.mod_nxdfm2_people.ini" beforeDir="false" afterPath="$PROJECT_DIR$/language/de-DE/de-DE.mod_nxdfm2_people.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/en-GB/en-GB.mod_nxdfm2_people.ini" beforeDir="false" afterPath="$PROJECT_DIR$/language/en-GB/en-GB.mod_nxdfm2_people.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mod_nxdfm2_people.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mod_nxdfm2_people.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,11 +80,33 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742048906693</updated>
-      <workItem from="1742048907724" duration="603000" />
+      <workItem from="1742048907724" duration="882000" />
     </task>
+    <task id="LOCAL-00001" summary="Fixed  Local Dev Bug">
+      <option name="closed" value="true" />
+      <created>1742049543619</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1742049543619</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added Media Folders and main js and css">
+      <option name="closed" value="true" />
+      <created>1742049555334</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1742049555334</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fixed  Local Dev Bug" />
+    <MESSAGE value="Added Media Folders and main js and css" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Media Folders and main js and css" />
   </component>
 </project>
