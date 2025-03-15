@@ -80,8 +80,8 @@
 }
 
 .nxd-people-module-modal .people-modal-image-container {
-    background: url("/modules/mod_nxdfm2_people/tmpl/assets/images/blocks-fletcher-XaGNO7bgZa8-unsplash.jpeg") no-repeat center center;
-    background-size: cover;
+    /*background: url("/modules/mod_nxdfm2_people/tmpl/assets/images/blocks-fletcher-XaGNO7bgZa8-unsplash.jpeg") no-repeat center center;*/
+    /*background-size: cover;*/
 }
 
 .nxd-people-module-modal .person-modal-title {

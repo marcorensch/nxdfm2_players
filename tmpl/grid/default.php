@@ -37,6 +37,11 @@ $gridClassnames = GridHelper::buildGridClassnames($params);
              data-player-lastname="<?php echo strtolower($person->lastname) ?>">
             <div class="uk-card nxd-player-grid-card uk-position-relative <?php echo $params->get('custom_card_classnames', '') ?>">
                 <div>
+                    <?php if($params->get('overview_bg','')):?>
+                    <div class="uk-position-cover uk-cover-container">
+	                    <?php echo LayoutHelper::render('joomla.html.image', ['src' => $params->get('overview_bg',''), 'alt' => "", 'class' => 'nxd-people-bg-image', "uk-cover" => "true"]); ?>
+                    </div>
+                    <?php endif; ?>
                     <div class="nxd-people-image-container uk-cover-container">
 		                <?php if ($person->effective->image): ?>
 			                <?php echo LayoutHelper::render('joomla.html.image', ['src' => $person->effective->image, 'alt' => $person->firstname . ' ' . $person->lastname, 'class' => 'nxd-people-image', "uk-cover" => "true"]); ?>

@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6354ab5d-97db-42e1-8b0a-abfbf1c49a6e" name="Changes" comment="Raised Version to 2.1.0&#10;Added Options for Background Image in Overview and Modal for the player pictures.">
+    <list default="true" id="6354ab5d-97db-42e1-8b0a-abfbf1c49a6e" name="Changes" comment="changed deployment preferences">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mod_nxdfm2_people.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mod_nxdfm2_people.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmpl/assets/css/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/tmpl/assets/css/grid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmpl/grid/default.php" beforeDir="false" afterPath="$PROJECT_DIR$/tmpl/grid/default.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmpl/item-modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/tmpl/item-modal.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +18,12 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="DrupalConfiguration">
+    <drupalPath />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="SCHEME" value="Project" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -31,6 +40,15 @@
     "accountId": "077db2d0-d36c-4cbb-9dea-1bd8f232480f"
   }
 }]]></component>
+  <component name="JoomlaConfiguration" enabled="true">
+    <joomlaConfigPath>$USER_HOME$/Sites/broncos.localhost/configuration.php</joomlaConfigPath>
+    <joomlaPath>$USER_HOME$/Sites/broncos.localhost</joomlaPath>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$USER_HOME$/Sites/broncos.localhost" />
+    </include_path>
+  </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 5
 }]]></component>
@@ -51,6 +69,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "settings.php.frameworks",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -78,7 +97,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742048906693</updated>
-      <workItem from="1742048907724" duration="980000" />
+      <workItem from="1742048907724" duration="1970000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed  Local Dev Bug">
       <option name="closed" value="true" />
@@ -104,7 +123,23 @@
       <option name="project" value="LOCAL" />
       <updated>1742049820499</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fixed field type for the image">
+      <option name="closed" value="true" />
+      <created>1742049919209</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1742049919209</updated>
+    </task>
+    <task id="LOCAL-00005" summary="changed deployment preferences">
+      <option name="closed" value="true" />
+      <created>1742049934553</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1742049934553</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +149,15 @@
     <MESSAGE value="Fixed  Local Dev Bug" />
     <MESSAGE value="Added Media Folders and main js and css" />
     <MESSAGE value="Raised Version to 2.1.0&#10;Added Options for Background Image in Overview and Modal for the player pictures." />
-    <option name="LAST_COMMIT_MESSAGE" value="Raised Version to 2.1.0&#10;Added Options for Background Image in Overview and Modal for the player pictures." />
+    <MESSAGE value="Fixed field type for the image" />
+    <MESSAGE value="changed deployment preferences" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed deployment preferences" />
+  </component>
+  <component name="WordPressConfiguration">
+    <wordpressPath />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
