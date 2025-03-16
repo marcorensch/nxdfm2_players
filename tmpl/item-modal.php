@@ -22,12 +22,12 @@ use NXD\Module\FootballManagerPeople\Site\Helper\PeopleHelper;
 defined('_JEXEC') or die;
 
 $breakPoint          = $params->get('modal_breakpoint', 'm');
-$gridClassname       = 'uk-child-width-1-2@' . $breakPoint;
+$gridClassname       = 'uk-grid-match uk-child-width-1-2@' . $breakPoint;
 $visibilityClassname = 'uk-visible@' . $breakPoint;
 $imageSmallClassname = 'uk-display-block uk-margin-auto uk-width-3-4@s uk-hidden@' . $breakPoint;
 
 $hasHistory = (isset($person->effective->history) && count($person->effective->history));
-$teamLogo = PeopleHelper::getEffectiveTeamLogo($person);
+$teamLogo   = PeopleHelper::getEffectiveTeamLogo($person);
 
 ?>
 <a href="<?php echo '#player-modal-' . $module->id . '-' . $person->id; ?>" uk-toggle
@@ -48,7 +48,7 @@ $teamLogo = PeopleHelper::getEffectiveTeamLogo($person);
 							<?php echo LayoutHelper::render('joomla.html.image', ['src' => $params->get('modal_img_bg', ''), 'alt' => "", 'class' => 'nxd-people-modal-bg-image', "uk-cover" => "true"]); ?>
                         </div>
 					<?php endif; ?>
-                    <div class="people-modal-image-container <?php echo $visibilityClassname; ?>">
+                    <div class="people-modal-image-container uk-height-1-1 uk-flex uk-flex-bottom <?php echo $visibilityClassname; ?>">
 						<?php echo HTMLHelper::image($person->effective->image, 'Player Image', ['class' => 'nxd-modal-player-image-large']) ?>
                     </div>
                 </div>
@@ -58,13 +58,13 @@ $teamLogo = PeopleHelper::getEffectiveTeamLogo($person);
                     <div class="uk-position-relative">
                         <!-- Image Small Viewports -->
                         <div class="uk-position-relative player-image-container@s">
-	                        <?php if ($params->get('modal_img_bg', '')): ?>
+							<?php if ($params->get('modal_img_bg', '')): ?>
                                 <div class="uk-position-cover uk-cover-container">
-			                        <?php echo LayoutHelper::render('joomla.html.image', ['src' => $params->get('modal_img_bg', ''), 'alt' => "", 'class' => 'nxd-people-modal-bg-image', "uk-cover" => "true"]); ?>
+									<?php echo LayoutHelper::render('joomla.html.image', ['src' => $params->get('modal_img_bg', ''), 'alt' => "", 'class' => 'nxd-people-modal-bg-image', "uk-cover" => "true"]); ?>
                                 </div>
-	                        <?php endif; ?>
+							<?php endif; ?>
 
-						    <?php echo HTMLHelper::image($person->effective->image, 'Player Image', ['class' => $imageSmallClassname . " uk-position-relative", 'width' => '200', 'height' => '200']); ?>
+                            <?php echo HTMLHelper::image($person->effective->image, 'Player Image', ['class' => $imageSmallClassname . " uk-position-relative", 'width' => '200', 'height' => '200']); ?>
                         </div>
                         <div class="uk-padding-small player-name-container ">
                             <div class="player-name">
@@ -76,12 +76,12 @@ $teamLogo = PeopleHelper::getEffectiveTeamLogo($person);
                                 </span>
                             </div>
                             <span class="uk-display-block uk-text-uppercase nxd-person-position"><?php echo $person->effective->position; ?></span>
-                            <?php if ($teamLogo): ?>
-                            <div class="team-logo-container">
-                                <?php
-                                echo LayoutHelper::render('joomla.html.image', ['src' => $teamLogo, 'width' => "200"]); ?>
-                            </div>
-                            <?php endif; ?>
+							<?php if ($teamLogo): ?>
+                                <div class="team-logo-container">
+									<?php
+									echo LayoutHelper::render('joomla.html.image', ['src' => $teamLogo, 'width' => "200"]); ?>
+                                </div>
+							<?php endif; ?>
                         </div>
 
                         <div class="uk-padding-small nxd-player-information-container">
