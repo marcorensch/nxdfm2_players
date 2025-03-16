@@ -43,8 +43,8 @@ $hasHistory = (isset($person->effective->history) && count($person->effective->h
 					<?php echo LayoutHelper::render('joomla.html.image', ['src' => $params->get('modal_img_bg', ''), 'alt' => "", 'class' => 'nxd-people-modal-bg-image', "uk-cover" => "true"]); ?>
                 </div>
 			<?php endif; ?>
-            <div class="uk-cover-container people-modal-image-container <?php echo $visibilityClassname; ?>">
-				<?php echo HTMLHelper::image($person->effective->image, 'Player Image', ['class' => 'nxd-modal-player-image-large']) ?>
+            <div class="uk-cover-container people-modal-image-container <?php echo $visibilityClassname; ?>" uk-height-viewport="offset-bottom: 20">
+				<?php echo HTMLHelper::image($person->effective->image, 'Player Image', ['class' => 'nxd-modal-player-image-large', 'uk-cover'=>"true"]) ?>
             </div>
             <div class="uk-position-relative">
                 <div class="uk-position-relative uk-padding">
@@ -103,7 +103,7 @@ $hasHistory = (isset($person->effective->history) && count($person->effective->h
 							<?php endif; ?>
                         </ul>
                         <?php else: ?>
-                            <div style="min-height: 600px;">
+                            <div class="uk-height-large@m">
 	                            <?php include ModuleHelper::getLayoutPath('mod_nxdfm2_people', 'item-datatables'); ?>
                             </div>
                         <?php endif; ?>

@@ -58,6 +58,7 @@
     display: block;
     position: absolute;
     bottom: 0;
+    top: auto;
 }
 
 .nxd-people-module-modal .player-modal-title {
