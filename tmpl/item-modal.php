@@ -77,7 +77,7 @@ $teamLogo   = PeopleHelper::getEffectiveTeamLogo($person);
                             </div>
                             <span class="uk-display-block uk-text-uppercase nxd-person-position"><?php echo $person->effective->position; ?></span>
 							<?php if ($teamLogo): ?>
-                                <div class="team-logo-container">
+                                <div class="team-logo-container uk-visible@m">
 									<?php
 									echo LayoutHelper::render('joomla.html.image', ['src' => $teamLogo, 'width' => "200"]); ?>
                                 </div>
