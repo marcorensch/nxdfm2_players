@@ -8,8 +8,8 @@
  * @link                                        https://www.nx-designs.ch
  *
  * @var $params Joomla\CMS\Parameter\Parameter  The module parameters
- * @var $people array                        contains the people
- *
+ * @var $people array                           contains the people
+ * @var $module /stdClass                       the module instance
  */
 
 defined('_JEXEC') or die;

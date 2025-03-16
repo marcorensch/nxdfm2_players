@@ -7,9 +7,9 @@
  * @license                                     GNU General Public License version 2 or later; see LICENSE.txt
  * @link                                        https://www.nx-designs.ch
  *
- * @var $params Joomla\CMS\Parameter\Parameter  The module parameters
+ * @var $params \Joomla\CMS\HTML\Registry       The module parameters
  * @var $people stdClass                        The persons array
- *
+ * @var $module stdClass                        The module instance
  */
 
 defined('_JEXEC') or die;
@@ -18,10 +18,16 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\ModuleHelper;
 use Joomla\CMS\Layout\LayoutHelper;
 use NXD\Module\FootballManagerPeople\Site\Helper\GridHelper;
-use NXD\Module\FootballManagerPeople\Site\Helper\PlayersHelper;
+use NXD\Module\FootballManagerPeople\Site\Helper\PeopleHelper;
+
+$playersCss = PeopleHelper::generatePersonsStyles($params, $people, $module->id);
 
 $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 $wa->registerAndUseStyle('NXDPlayersGridItemCSS', 'modules/mod_nxdfm2_people/tmpl/assets/css/grid.css');
+if($playersCss){
+	$wa->addInlineStyle($playersCss);
+}
+
 
 // Build Grid ColumnsString
 

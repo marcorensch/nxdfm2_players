@@ -12,10 +12,12 @@
  * @var $module stdClass
  */
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\ModuleHelper;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Layout\LayoutHelper;
+use NXD\Module\FootballManagerPeople\Site\Helper\PeopleHelper;
 
 defined('_JEXEC') or die;
 
@@ -25,6 +27,7 @@ $visibilityClassname = 'uk-visible@' . $breakPoint;
 $imageSmallClassname = 'uk-display-block uk-margin-auto uk-width-3-4@s uk-hidden@' . $breakPoint;
 
 $hasHistory = (isset($person->effective->history) && count($person->effective->history));
+$teamLogo = PeopleHelper::getEffectiveTeamLogo($person);
 
 ?>
 <a href="<?php echo '#player-modal-' . $module->id . '-' . $person->id; ?>" uk-toggle
@@ -64,15 +67,21 @@ $hasHistory = (isset($person->effective->history) && count($person->effective->h
 						    <?php echo HTMLHelper::image($person->effective->image, 'Player Image', ['class' => $imageSmallClassname . " uk-position-relative", 'width' => '200', 'height' => '200']); ?>
                         </div>
                         <div class="uk-padding-small player-name-container ">
-                        <span class="player-name">
-                            <span class="player-firstname">
-                                <?php echo $person->firstname; ?>
-                            </span>
-                            <span class="player-lastname">
-                                <?php echo $person->lastname; ?>
-                            </span>
-                        </span>
-                            <span class="uk-display-block uk-text-meta uk-text-uppercase uk-text-muted"><?php echo $person->effective->position; ?></span>
+                            <div class="player-name">
+                                <span class="player-firstname">
+                                    <?php echo $person->firstname; ?>
+                                </span>
+                                <span class="player-lastname">
+                                    <?php echo $person->lastname; ?>
+                                </span>
+                            </div>
+                            <span class="uk-display-block uk-text-uppercase nxd-person-position"><?php echo $person->effective->position; ?></span>
+                            <?php if ($teamLogo): ?>
+                            <div class="team-logo-container">
+                                <?php
+                                echo LayoutHelper::render('joomla.html.image', ['src' => $teamLogo, 'width' => "200"]); ?>
+                            </div>
+                            <?php endif; ?>
                         </div>
 
                         <div class="uk-padding-small nxd-player-information-container">

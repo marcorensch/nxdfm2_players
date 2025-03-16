@@ -6,6 +6,49 @@
 
 }
 
+.nxd-people-module-modal {
+
+    button.uk-close {
+        background: transparent;
+        color: #fff;
+        opacity: .6;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .player-name-container {
+        position: relative;
+
+        .player-name {
+            position: relative;
+            z-index: 2;
+        }
+
+        .team-logo-container {
+            position: absolute;
+            top: 0;
+            right: 10%;
+            bottom: 0;
+            width: 40%;
+            background: transparent;
+            z-index: 1;
+            opacity: .7;
+            overflow: hidden;
+
+            > img {
+                width: 100%;
+                height: auto;
+                display: block;
+                position: relative;
+                top: -25%;
+                filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, .4));
+            }
+        }
+    }
+}
+
 .nxd-people-module .uk-card-body {
     padding: 20px 10px 30px;
     background: #fff;
