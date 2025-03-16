@@ -1,0 +1,43 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# PhpStorm specific files
+.idea/*
+!.idea/runConfigurations
+!.idea/codeStyles
+!.idea/inspectionProfiles
+
+# Composer
+vendor/
+composer.lock
+
+# PHP files
+*.php[cod]
+*$py.class
+
+# Temporary files
+*.tmp
+*~
+
+# Dependency directories
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build and output directories
+build/
+dist/
+out/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+*.log
+logs/
