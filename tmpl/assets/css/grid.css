@@ -6,6 +6,43 @@
 
 }
 
+.nxd-team-overlay-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    background: rgba(0, 0, 0, .5);
+    backdrop-filter: blur(2px);
+    color: #fff;
+    z-index: 20;
+
+    .nxd-overlay-inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 400px;
+        text-align: center;
+        transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+        .nxd-team-overlay-name {
+            font-family: "Anton Regular", serif;
+            font-weight: bold;
+            font-size: 40px;
+            text-transform: uppercase;
+            line-height: 50px;
+        }
+    }
+    .nxd-team-overlay-logo{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: auto;
+        background: transparent;
+        padding:4px;
+    }
+}
+
 .nxd-people-module-modal {
 
     button.uk-close {

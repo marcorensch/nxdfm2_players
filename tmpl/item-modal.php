@@ -51,6 +51,20 @@ $teamLogo   = PeopleHelper::getEffectiveTeamLogo($person);
                     <div class="people-modal-image-container uk-height-1-1 uk-flex uk-flex-bottom <?php echo $visibilityClassname; ?>">
 						<?php echo HTMLHelper::image($person->effective->image, 'Player Image', ['class' => 'nxd-modal-player-image-large']) ?>
                     </div>
+                    <div class="nxd-team-overlay-container">
+                        <div class="nxd-overlay-inner">
+                            <div class="nxd-team-overlay-name" uk-scrollspy="target: > div; cls: uk-animation-slide-left-medium; delay: 100; repeat: true">
+                            <div>
+                                Calanda Broncos
+                            </div>
+                            </div>
+                        </div>
+                        <div class="nxd-team-overlay-logo" uk-scrollspy="cls: uk-animation-fade; delay: 200; repeat: true">
+		                    <?php
+		                    echo LayoutHelper::render('joomla.html.image', ['src' => $teamLogo, 'width' => "100"]);
+		                    ?>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div>
@@ -64,10 +78,10 @@ $teamLogo   = PeopleHelper::getEffectiveTeamLogo($person);
                                 </div>
 							<?php endif; ?>
 
-                            <?php echo HTMLHelper::image($person->effective->image, 'Player Image', ['class' => $imageSmallClassname . " uk-position-relative", 'width' => '200', 'height' => '200']); ?>
+							<?php echo HTMLHelper::image($person->effective->image, 'Player Image', ['class' => $imageSmallClassname . " uk-position-relative", 'width' => '200', 'height' => '200']); ?>
                         </div>
-                        <div class="uk-padding-small player-name-container ">
-                            <div class="player-name">
+                        <div class="uk-padding-small uk-overflow-hidden player-name-container" uk-scrollspy="target: > .nxd-animated; cls: uk-animation-slide-left-medium; delay: 200; repeat: true">
+                            <div class="nxd-animated player-name">
                                 <span class="player-firstname">
                                     <?php echo $person->firstname; ?>
                                 </span>
@@ -75,7 +89,7 @@ $teamLogo   = PeopleHelper::getEffectiveTeamLogo($person);
                                     <?php echo $person->lastname; ?>
                                 </span>
                             </div>
-                            <span class="uk-display-block uk-text-uppercase nxd-person-position"><?php echo $person->effective->position; ?></span>
+                            <span class="nxd-animated uk-display-block uk-text-uppercase nxd-person-position"><?php echo $person->effective->position; ?></span>
 							<?php if ($teamLogo): ?>
                                 <div class="team-logo-container uk-visible@m">
 									<?php
