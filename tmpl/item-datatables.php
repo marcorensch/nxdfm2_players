@@ -20,26 +20,47 @@ defined('_JEXEC') or die;
 
 ?>
 
-<div class="uk-margin-top player-data">
-    <h3 class="person-modal-title person-information-title"><?php echo Text::_('MOD_NXDFM2_PEOPLE_INFORMATION_TITLE');?></h3>
-    <table class="uk-table uk-table-striped">
-        <tbody>
-		<?php foreach ($person->effective->table as $row):
-			if($row['value']):
-				?>
-                <tr>
-                    <th class="uk-width-1-3"><?php echo Text::_($row['label']);?></th>
-                    <td><?php echo $row['value'];?></td>
-                </tr>
-			<?php
-			endif;
-		endforeach;
-		?>
-        <!-- Customfields -->
-
-		<?php include ModuleHelper::getLayoutPath('mod_nxdfm2_people', 'item-cf-table'); ?>
-
-        <!-- Customfields -->
-        </tbody>
-    </table>
+<div class="uk-margin-top player-data" uk-scrollspy="target: .nxd-animated-row .nxd-animated; cls: uk-animation-slide-left-small; delay: 150; repeat: true">
+    <h3 class="nxd-person-modal-title nxd-person-information-title"><?php echo Text::_('MOD_NXDFM2_PEOPLE_INFORMATION_TITLE'); ?></h3>
+    <div class="nxd-person-data-table"
+         uk-scrollspy="target: > div; cls: uk-animation-slide-bottom-small; delay: 100; repeat: true">
+		<?php foreach ($person->effective->table as $row): ?>
+			<?php if ($row['value']): ?>
+                <div class="nxd-person-data-row">
+                    <div class="uk-width-expand">
+                        <div class="nxd-animated-row">
+                            <div class="uk-grid-small" uk-grid>
+                                <div class="uk-width-1-3">
+                                    <div class="nxd-animated nxd-person-data-label"><?php echo Text::_($row['label']); ?></div>
+                                </div>
+                                <div class="uk-width-expand">
+                                    <div class="nxd-animated nxd-person-data-value"><?php echo $row['value']; ?></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			<?php endif; ?>
+		<?php endforeach; ?>
+    </div>
+    <!--    <table class="uk-table uk-table-striped">-->
+    <!--        <tbody>-->
+    <!--		--><?php //foreach ($person->effective->table as $row):
+	//			if($row['value']):
+	//				?>
+    <!--                <tr>-->
+    <!--                    <th class="uk-width-1-3">--><?php //echo Text::_($row['label']);?><!--</th>-->
+    <!--                    <td>--><?php //echo $row['value'];?><!--</td>-->
+    <!--                </tr>-->
+    <!--			--><?php
+	//			endif;
+	//		endforeach;
+	//		?>
+    <!--        <!-- Customfields -->-->
+    <!---->
+    <!--		--><?php //include ModuleHelper::getLayoutPath('mod_nxdfm2_people', 'item-cf-table'); ?>
+    <!---->
+    <!--        <!-- Customfields -->-->
+    <!--        </tbody>-->
+    <!--    </table>-->
 </div>
