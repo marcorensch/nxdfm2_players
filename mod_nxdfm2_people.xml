@@ -348,6 +348,41 @@
                         <option value="1">JYES</option>
                         <option value="0">JNO</option>
                     </field>
+                    <field name="animated_modal_item_name"
+                           showon="show_modal:1"
+                           default="1"
+                           filter="integer"
+                           type="radio"
+                           class="btn-group btn-group-yesno"
+                           label="MOD_NXDFM2_PEOPLE_ANIMATED_NAME_LABEL"
+                           description="MOD_NXDFM2_PEOPLE_ANIMATED_NAME_DESCRIPTION"
+                    >
+                        <option value="0">JNO</option>
+                        <option value="1">JYES</option>
+                    </field>
+                    <field name="team_overlay_on_picture"
+                           showon="show_modal:1"
+                           default="1"
+                           filter="integer"
+                           type="radio"
+                           class="btn-group btn-group-yesno"
+                           label="MOD_NXDFM2_PEOPLE_TEAM_OVERLAY_PICTURE_LABEL"
+                           description="MOD_NXDFM2_PEOPLE_TEAM_OVERLAY_PICTURE_DESCRIPTION"
+                    >
+                        <option value="0">JNO</option>
+                        <option value="1">JYES</option>
+                    </field>
+                    <field name="team_overlay_logo_src"
+                           showon="show_modal:1[AND]team_overlay_on_picture:1"
+                           default="default"
+                           type="radio"
+                           class="btn-group"
+                           label="MOD_NXDFM2_PEOPLE_TEAM_OVERLAY_LOGO_SRC_LABEL"
+                           description="MOD_NXDFM2_PEOPLE_TEAM_OVERLAY_LOGO_SRC_DESCRIPTION"
+                    >
+                        <option value="default">JDEFAULT</option>
+                        <option value="inverse">MOD_NXDFM2_OPT_INVERTED</option>
+                    </field>
                     <field name="modal_breakpoint"
                            type="radio"
                            class="btn-group"

@@ -51,6 +51,7 @@ $teamLogo   = PeopleHelper::getEffectiveTeamLogo($person);
                     <div class="people-modal-image-container uk-height-1-1 uk-flex uk-flex-bottom <?php echo $visibilityClassname; ?>">
 						<?php echo HTMLHelper::image($person->effective->image, 'Player Image', ['class' => 'nxd-modal-player-image-large']) ?>
                     </div>
+                    <?php if($params->get('team_overlay_on_picture',1)):?>
                     <div class="nxd-team-overlay-container">
                         <div class="nxd-overlay-inner">
                             <div class="nxd-team-overlay-name" uk-scrollspy="target: > div; cls: uk-animation-slide-left-medium; delay: 100; repeat: true">
@@ -65,6 +66,7 @@ $teamLogo   = PeopleHelper::getEffectiveTeamLogo($person);
 		                    ?>
                         </div>
                     </div>
+                    <?php endif;?>
                 </div>
             </div>
             <div>
@@ -80,7 +82,12 @@ $teamLogo   = PeopleHelper::getEffectiveTeamLogo($person);
 
 							<?php echo HTMLHelper::image($person->effective->image, 'Player Image', ['class' => $imageSmallClassname . " uk-position-relative", 'width' => '200', 'height' => '200']); ?>
                         </div>
-                        <div class="uk-padding-small uk-overflow-hidden player-name-container" uk-scrollspy="target: > .nxd-animated; cls: uk-animation-slide-left-medium; delay: 200; repeat: true">
+                        <div class="uk-padding-small uk-overflow-hidden player-name-container"
+                             <?php if($params->get('animated_modal_item_name',1)){
+                                 echo 'uk-scrollspy="target: > .nxd-animated; cls: uk-animation-slide-left-medium; delay: 200; repeat: true"';
+                             }
+                             ?>
+                        >
                             <div class="nxd-animated player-name">
                                 <span class="player-firstname">
                                     <?php echo $person->firstname; ?>
