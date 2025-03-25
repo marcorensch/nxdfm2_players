@@ -41,25 +41,10 @@ defined('_JEXEC') or die;
                 </div>
 			<?php endif; ?>
 		<?php endforeach; ?>
+        <!-- Customfields -->
+
+	    <?php include ModuleHelper::getLayoutPath('mod_nxdfm2_people', 'item-cf-table'); ?>
+
+        <!-- Customfields -->
     </div>
-    <!--    <table class="uk-table uk-table-striped">-->
-    <!--        <tbody>-->
-    <!--		--><?php //foreach ($person->effective->table as $row):
-	//			if($row['value']):
-	//				?>
-    <!--                <tr>-->
-    <!--                    <th class="uk-width-1-3">--><?php //echo Text::_($row['label']);?><!--</th>-->
-    <!--                    <td>--><?php //echo $row['value'];?><!--</td>-->
-    <!--                </tr>-->
-    <!--			--><?php
-	//			endif;
-	//		endforeach;
-	//		?>
-    <!--        <!-- Customfields -->-->
-    <!---->
-    <!--		--><?php //include ModuleHelper::getLayoutPath('mod_nxdfm2_people', 'item-cf-table'); ?>
-    <!---->
-    <!--        <!-- Customfields -->-->
-    <!--        </tbody>-->
-    <!--    </table>-->
 </div>
