@@ -41,7 +41,7 @@ class TeamDataModel
 		$this->id            = $teamData['team_id'];
 		$this->name          = trim($teamData['team_name']);
 		$this->league        = key_exists('league', $teamData) ? trim($teamData['league'] ?: "") : "";
-		$this->logo          = trim($teamData['team_logo']) ?: null;
+		$this->logo          = trim($teamData['team_logo']) ?: "";
 		$this->logo_inverted = key_exists('team_logo_inverted', $teamData) && $teamData['team_logo_inverted'] ? trim($teamData['team_logo_inverted']) : "";
 		$this->color         = trim($teamData['team_color']) ?: "#000000";
 		$this->position      = key_exists("position_id", $teamData) && $teamData['position_id'] ? new PositionModel($teamData) : null;

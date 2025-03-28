@@ -215,17 +215,27 @@ class TeamMembersModel extends BaseDatabaseModel
 	protected function sortItems(&$people, $params): void
 	{
 		// Order by Number OR position if selected
-		if (in_array($params->get('order_by', 'ordering'), array('number', 'firstname','lastname')))
+		if (in_array($params->get('order_by', 'ordering'), array('firstname','lastname')))
 		{
 			$field = $params->get('order_by', 'ordering');
 			// order the array of items by the value of the key number
 			if ($params->get('sort_direction', 'ASC') === 'ASC')
 			{
-				usort($people, fn($a, $b) => strnatcmp($a->active_team->$field, $b->active_team->$field));
+				usort($people, fn($a, $b) => strnatcmp($a->$field, $b->$field));
 			}
 			else
 			{
-				usort($people, fn($a, $b) => strnatcmp($b->active_team->$field, $a->active_team->$field));
+				usort($people, fn($a, $b) => strnatcmp($b->$field, $a->$field));
+			}
+		}
+		if(in_array($params->get('order_by', 'ordering'), array('number'))){
+			if ($params->get('sort_direction', 'ASC') === 'ASC')
+			{
+				usort($people, fn($a, $b) => strnatcmp($a->active_team->number, $b->active_team->number));
+			}
+			else
+			{
+				usort($people, fn($a, $b) => strnatcmp($b->active_team->number, $a->active_team->number));
 			}
 		}
 		if(in_array($params->get('order_by', 'ordering'), array('position'))){
