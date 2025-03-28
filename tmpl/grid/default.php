@@ -8,7 +8,7 @@
  * @link                                        https://www.nx-designs.ch
  *
  * @var $params \Joomla\CMS\HTML\Registry       The module parameters
- * @var $team stdClass                        The persons array
+ * @var $team   stdClass                        The persons array
  * @var $module stdClass                        The module instance
  */
 
@@ -24,7 +24,8 @@ $playersCss = PeopleHelper::generatePeopleStyles($team, $module->id);
 
 $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 $wa->registerAndUseStyle('NXDPlayersGridItemCSS', 'modules/mod_nxdfm2_people/tmpl/assets/css/grid.css');
-if($playersCss){
+if ($playersCss)
+{
 	$wa->addInlineStyle($playersCss);
 }
 
@@ -43,21 +44,28 @@ $gridClassnames = GridHelper::buildGridClassnames($params);
              data-player-lastname="<?php echo strtolower($person->lastname) ?>">
             <div class="uk-card nxd-player-grid-card uk-position-relative <?php echo $params->get('custom_card_classnames', '') ?>">
                 <div>
-                    <?php if($params->get('overview_bg','')):?>
-                    <div class="uk-position-cover uk-cover-container">
-	                    <?php echo LayoutHelper::render('joomla.html.image', ['src' => $params->get('overview_bg',''), 'alt' => "", 'class' => 'nxd-people-bg-image', "uk-cover" => "true"]); ?>
-                    </div>
-                    <?php endif; ?>
+					<?php if ($params->get('overview_bg', '')): ?>
+                        <div class="uk-position-cover uk-cover-container">
+							<?php echo LayoutHelper::render('joomla.html.image', ['src' => $params->get('overview_bg', ''), 'alt' => "", 'class' => 'nxd-people-bg-image', "uk-cover" => "true"]); ?>
+                        </div>
+					<?php endif; ?>
                     <div class="nxd-people-image-container uk-cover-container">
-		                <?php if ($person->image): ?>
-			                <?php echo LayoutHelper::render('joomla.html.image', ['src' => $person->image, 'alt' => $person->firstname . ' ' . $person->lastname, 'class' => 'nxd-people-image', "uk-cover" => "true"]); ?>
-		                <?php endif; ?>
+						<?php if ($person->image): ?>
+							<?php echo LayoutHelper::render('joomla.html.image', ['src' => $person->image, 'alt' => $person->firstname . ' ' . $person->lastname, 'class' => 'nxd-people-image', "uk-cover" => "true"]); ?>
+						<?php endif; ?>
                     </div>
                 </div>
+				<?php if ($params->get('position_in_overview', '') === "badge" && isset($person->active_team->position->name)): ?>
+                    <div class="uk-position-top-right">
+                        <div class="nxd-padding-xsmall uk-animation-slide-right">
+                            <div class="nxd-person-badge"><?php echo $person->active_team->position->name; ?></div>
+                        </div>
+                    </div>
+				<?php endif; ?>
                 <div class="uk-card-body <?php echo $params->get('custom_card_content_classnames', '') ?>">
-					<?php if ($params->get('position_in_overview', '') === "top"): ?>
+					<?php if ($params->get('position_in_overview', '') === "top" && isset($person->active_team->position->name)): ?>
                         <div class="uk-width-1-1 person-position">
-							<?php echo $person->active_team->position ?? ''; ?>
+							<?php echo $person->active_team->position->name ?? ''; ?>
                         </div>
 					<?php endif; ?>
 					<?php if (isset($person->active_team->number)): ?>
@@ -75,9 +83,9 @@ $gridClassnames = GridHelper::buildGridClassnames($params);
                             </div>
                         </div>
                     </h3>
-					<?php if ($params->get('position_in_overview', '') === "bottom"): ?>
+					<?php if ($params->get('position_in_overview', '') === "bottom" && isset($person->active_team->position->name)): ?>
                         <div class="uk-width-1-1 person-position">
-							<?php echo $person->effective->position ?? ''; ?>
+							<?php echo $person->active_team->position->name ?? ''; ?>
                         </div>
 					<?php endif; ?>
                 </div>

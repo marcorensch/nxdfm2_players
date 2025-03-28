@@ -152,8 +152,16 @@
                             pattern="^\d+:\d+$"
                             hint="MOD_NXDFM2_PEOPLE_PREVIEW_IMG_ASPECT_RATIO_HINT"
                     />
-                    <field name="position_in_overview" label="MOD_NXDFM2_PEOPLE_SHOW_POSITION_IN_GRID_LABEL" description="MOD_NXDFM2_PEOPLE_SHOW_POSITION_IN_GRID_DESC" showon="template:grid" type="list" default="">
+                    <field name="position_in_overview"
+                           label="MOD_NXDFM2_PEOPLE_SHOW_POSITION_IN_GRID_LABEL"
+                           description="MOD_NXDFM2_PEOPLE_SHOW_POSITION_IN_GRID_DESC"
+                           showon="template:grid"
+                           type="radio"
+                           class="btn-group"
+                           default=""
+                    >
                         <option value="">JNO</option>
+                        <option value="badge">MOD_NXDFM2_PEOPLE_OPT_BADGE</option>
                         <option value="top">MOD_NXDFM2_PEOPLE_OPT_TOP</option>
                         <option value="bottom">MOD_NXDFM2_PEOPLE_OPT_BOTTOM</option>
                     </field>

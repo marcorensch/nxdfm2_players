@@ -6,6 +6,18 @@
 
 }
 
+.nxd-people-module .nxd-padding-xsmall{
+    padding: 5px;
+}
+
+.nxd-people-module .nxd-person-badge{
+    background: #000;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
 .nxd-team-overlay-container{
     position: absolute;
     top: 0;
