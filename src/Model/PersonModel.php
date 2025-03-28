@@ -62,7 +62,7 @@ class PersonModel
 		$this->lastname      = trim($personData->lastname);
 		$this->teams         = self::setTeams($personData->teams, $params->get('only_active_positions', 1));
 		$this->active_team   = $this->setActiveTeam($params->get('team_id', 0));
-		$this->image         = self::definePersonImage($personData->image);
+		$this->image         = self::definePersonImage($personData->image, $params->get('fallback_image', ''));
 		$this->about         = $personData->about;
 		$this->nation        = $personData->nation;
 		$this->custom_fields = $this->getCustomFields();
@@ -119,7 +119,7 @@ class PersonModel
 		return $currentTeam;
 	}
 
-	private function definePersonImage($mainImageUrl): string
+	private function definePersonImage(string $mainImageUrl, string $fallback): string
 	{
 		// Set the general image as src
 		$image = $mainImageUrl;
@@ -128,6 +128,8 @@ class PersonModel
 		{
 			$image = $this->active_team->image;
 		}
+
+		if (!trim($image)) $image = $fallback;
 
 		return trim($image);
 	}
