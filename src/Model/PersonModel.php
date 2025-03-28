@@ -18,7 +18,9 @@ namespace NXD\Module\FootballManagerPeople\Site\Model;
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Date\Date;
+use Joomla\CMS\Factory;
 use Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
+use Joomla\Database\DatabaseInterface;
 use Joomla\Registry\Registry;
 use NXD\Module\FootballManagerPeople\Site\Model\TeamDataModel;
 
@@ -177,5 +179,28 @@ class PersonModel
 		);
 
 		return $customFields;
+	}
+
+	protected function getSponsors($sponsors):array
+	{
+		if (!$sponsors) return [];
+		$sponsors = json_decode($sponsors);
+
+		$sponsorIds = array();
+		foreach ($sponsors as $sponsor)
+		{
+			$sponsorIds[] = $sponsor->sponsor;
+		}
+
+		if(empty($sponsorIds)) return array();
+
+		$db    = Factory::getContainer()->get(DatabaseInterface::class);
+		$query = $db->getQuery(true);
+		$query->select('id, title, logo, image, website')
+			->from('#__footballmanager_sponsors')
+			->where('id IN (' . implode(',', $sponsorIds) . ')');
+		$db->setQuery($query);
+		return $db->loadObjectList();
+
 	}
 }

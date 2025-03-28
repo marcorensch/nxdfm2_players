@@ -58,6 +58,9 @@ class TeamMembersModel extends BaseDatabaseModel
 			$keys[] = 'height';
 			$keys[] = 'weight';
 			$keys[] = 'birthday';
+			if($context == 'players'){
+				$keys[] = 'sponsors';
+			}
 		}
 		$columns = array_map(fn($key) => "p.{$key}", $keys);
 

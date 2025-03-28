@@ -14,8 +14,11 @@
 
 namespace NXD\Module\FootballManagerPeople\Site\Model;
 
+use Joomla\CMS\Factory;
 use Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
+use Joomla\Database\DatabaseInterface;
 use Joomla\Registry\Registry;
+use NXD\Component\Footballmanager\Administrator\Model\SponsorModel;
 use stdClass;
 
 defined('_JEXEC') or die;
@@ -26,6 +29,7 @@ class PlayerModel extends PersonModel
 	public ?int $height;
 	public ?int $weight;
 	public array $custom_fields = [];
+	public array $sponsors = [];
 	protected string $type = 'player';
 
 	public function __construct(stdClass $personData, Registry $params)
@@ -36,6 +40,7 @@ class PlayerModel extends PersonModel
 		$this->height        = $personData->height;
 		$this->weight        = $personData->weight;
 		$this->custom_fields = $this->getCustomFields();
+		$this->sponsors      = $this->getSponsors($personData->sponsors);
 
 	}
 
