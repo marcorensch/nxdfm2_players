@@ -8,7 +8,7 @@
     <copyright>Copyright ©2023 by nx-designs</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <namespace path="src">NXD\Module\FootballManagerPeople</namespace>
-    <version>2.1.2</version>
+    <version>2.2.0</version>
     <description><![CDATA[MOD_NXDFM2_PEOPLE_XML_DESCRIPTION]]></description>
 
     <files>
@@ -381,7 +381,7 @@
                            description="MOD_NXDFM2_PEOPLE_TEAM_OVERLAY_LOGO_SRC_DESCRIPTION"
                     >
                         <option value="default">JDEFAULT</option>
-                        <option value="inverse">MOD_NXDFM2_OPT_INVERTED</option>
+                        <option value="inverted">MOD_NXDFM2_OPT_INVERTED</option>
                     </field>
                     <field name="modal_breakpoint"
                            type="radio"

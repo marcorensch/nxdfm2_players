@@ -7,18 +7,20 @@
  * @license                                     GNU General Public License version 2 or later; see LICENSE.txt
  * @link                                        https://www.nx-designs.ch
  *
- * @var $params Joomla\CMS\Parameter\Parameter  The module parameters
+ * @var $params \Joomla\Registry\Registry The module parameters
  *
  */
 
 
 namespace NXD\Module\FootballManagerPeople\Site\Helper;
 
+use Joomla\Registry\Registry;
+
 defined('_JEXEC') or die;
 
 class GridHelper
 {
-	public static function buildGridClassnames($params) :string
+	public static function buildGridClassnames(Registry $params) :string
 	{
 
 		$gridClassnames = GridHelper::buildColumnsString($params);
@@ -48,14 +50,14 @@ class GridHelper
 		return $gridColumns;
 	}
 
-	private static function buildGridGapString($params) :string
+	private static function buildGridGapString(Registry $params) :string
 	{
 		$colGap = 'uk-grid-column-' . $params->get('grid_column_gap', 'small');
 		$rowGap = 'uk-grid-row-' . $params->get('grid_row_gap', 'small');
 		return $colGap . ' ' . $rowGap . ' ';
 	}
 
-	private static function buildGridAlignmentsString($params) :string
+	private static function buildGridAlignmentsString(Registry $params) :string
 	{
 		$sizes = ['', 's', 'm', 'l', 'xl'];
 		$gridAlignments = '';

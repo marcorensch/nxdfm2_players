@@ -30,20 +30,22 @@
             font-size: 40px;
             text-transform: uppercase;
             line-height: 50px;
+            text-wrap: nowrap;
         }
     }
     .nxd-team-overlay-logo{
         position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        bottom: 20px;
+        left: 4px;
+        right: 4px;
         height: auto;
         background: transparent;
-        padding:4px;
     }
 }
 
 .nxd-people-module-modal {
+
+    user-select: none;
 
     button.uk-close {
         background: transparent;
@@ -55,40 +57,39 @@
         }
     }
 
-    .player-name-container {
+    .nxd-person-name-container {
         position: relative;
 
-        .player-name {
+        .nxd-person-name {
             position: relative;
             z-index: 2;
         }
 
         .team-logo-container {
             position: absolute;
-            top: 0;
-            right: 10%;
-            bottom: 0;
-            width: 40%;
+            top: -20px;
+            right: 10px;
             background: transparent;
             z-index: 1;
-            opacity: .7;
+            opacity: .2;
             overflow: hidden;
 
             > img {
-                width: 100%;
-                height: auto;
+                height: 200px;
+                width: auto;
                 display: block;
                 position: relative;
-                top: -25%;
                 filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, .4));
             }
         }
     }
 
-    .nxd-person-data-table{
+    .nxd-person-data-table,
+    .nxd-person-history-table{
         margin-top: 20px;
 
-        .nxd-person-data-row{
+        .nxd-person-data-row,
+        .nxd-person-history-row{
             padding: 10px;
             margin-top: 0;
             margin-bottom: 0;
@@ -99,10 +100,12 @@
                 color: #474747;
             }
         }
-        .nxd-person-data-row:nth-of-type(even) {
+        .nxd-person-data-row:nth-of-type(even),
+        .nxd-person-history-row:nth-of-type(even){
             background: #f6f6f6;
         }
-        .nxd-person-data-row:nth-of-type(odd) {
+        .nxd-person-data-row:nth-of-type(odd),
+        .nxd-person-history-row:nth-of-type(odd){
             background: #ffffff;
         }
     }
@@ -129,14 +132,14 @@
     font-size:2rem;
 }
 
-.nxd-people-module .player-firstname {
+.nxd-people-module .nxd-person-firstname {
     display: block;
-    font-size: .8rem;
+    font-size: 1.2rem;
     margin-bottom: 0;
-    font-weight: 200;
+    font-weight: 100;
 }
 
-.nxd-people-module .player-lastname {
+.nxd-people-module .nxd-person-lastname {
     display: block;
     font-size: 2rem;
     line-height: 2rem;
@@ -154,7 +157,7 @@
     z-index: 100;
 }
 
-.nxd-people-module-modal img.nxd-modal-player-image-large {
+.nxd-people-module-modal img.nxd-modal-person-image-large {
     width: 100%;
     height: auto;
     display: block;
@@ -163,7 +166,7 @@
     top: auto;
 }
 
-.nxd-people-module-modal .player-modal-title {
+.nxd-people-module-modal .nxd-person-modal-title {
     user-select: none;
 }
 
@@ -172,11 +175,11 @@
     overflow: hidden;
 }
 
-.nxd-people-module-modal .player-name {
+.nxd-people-module-modal .nxd-person-name {
     margin-top: 1rem;
 }
-.nxd-people-module-modal .player-name .player-firstname,
-.nxd-people-module-modal .player-name .player-lastname {
+.nxd-people-module-modal .nxd-person-name .nxd-person-firstname,
+.nxd-people-module-modal .nxd-person-name .nxd-person-lastname {
     font-family: "Bebas Neue Regular", serif;
     font-size: 4rem;
     line-height: 3.5rem;
@@ -209,7 +212,7 @@
         display: none;
     }
 }
-.nxd-people-module-modal .nxd-player-subnav {
+.nxd-people-module-modal .nxd-person-subnav {
     margin-top:20px;
 
     li {

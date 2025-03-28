@@ -13,30 +13,24 @@
  */
 
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Layout\FileLayout;
 use NXD\Module\FootballManagerPeople\Site\Helper\CustomFieldHelper;
 
 defined('_JEXEC') or die;
+
+$personDataRowTemplate = new FileLayout('item-simple-datatable-row', __DIR__ . '/grid');
+
 ?>
 
 <?php
-if (isset($person->cfields['groups'])):
-	foreach ($person->cfields['groups'] as $cfGroup):?>
-        <div class="nxd-person-data-row uk-width-expand">
-            <div class="nxd-animated-row">
-                <div class="uk-grid-small" uk-grid>
-                    <div class="uk-width-1-3">
-                        <div class="nxd-animated nxd-person-data-label"><?php echo Text::_($cfGroup[0]->group_title); ?></div>
-                    </div>
-                    <div class="uk-width-expand">
-                        <div class="nxd-animated nxd-person-data-value">
-							<?php foreach ($cfGroup as $cfField): ?>
-								<?php CustomFieldHelper::renderField($cfField) ?>
-							<?php endforeach; ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-	<?php endforeach;
+if (isset($person->custom_fields)):
+	foreach ($person->custom_fields as $customField):
+        if(!$customField->value) continue;
+		echo $personDataRowTemplate->render([
+			"type" => "data",
+			"label" => $customField->title,
+			"value" => $customField->value
+		]);
+    endforeach;
 endif;
 ?>

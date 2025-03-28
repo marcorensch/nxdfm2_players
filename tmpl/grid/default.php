@@ -8,7 +8,7 @@
  * @link                                        https://www.nx-designs.ch
  *
  * @var $params \Joomla\CMS\HTML\Registry       The module parameters
- * @var $people stdClass                        The persons array
+ * @var $team stdClass                        The persons array
  * @var $module stdClass                        The module instance
  */
 
@@ -20,7 +20,7 @@ use Joomla\CMS\Layout\LayoutHelper;
 use NXD\Module\FootballManagerPeople\Site\Helper\GridHelper;
 use NXD\Module\FootballManagerPeople\Site\Helper\PeopleHelper;
 
-$playersCss = PeopleHelper::generatePersonsStyles($params, $people, $module->id);
+$playersCss = PeopleHelper::generatePeopleStyles($team, $module->id);
 
 $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 $wa->registerAndUseStyle('NXDPlayersGridItemCSS', 'modules/mod_nxdfm2_people/tmpl/assets/css/grid.css');
@@ -36,9 +36,9 @@ $gridClassnames = GridHelper::buildGridClassnames($params);
 ?>
 
 <div class="<?php echo $gridClassnames; ?>" uk-grid uk-height-match="target: >div >.uk-card > .uk-card-body">
-	<?php foreach ($people as $person):
+	<?php foreach ($team as $person):
 		?>
-        <div data-player-number="<?php echo $person->effective->number ?? 0; ?>"
+        <div data-player-number="<?php echo $person->active_team->number ?? 0; ?>"
              data-player-firstname="<?php echo strtolower($person->firstname) ?>"
              data-player-lastname="<?php echo strtolower($person->lastname) ?>">
             <div class="uk-card nxd-player-grid-card uk-position-relative <?php echo $params->get('custom_card_classnames', '') ?>">
@@ -49,28 +49,28 @@ $gridClassnames = GridHelper::buildGridClassnames($params);
                     </div>
                     <?php endif; ?>
                     <div class="nxd-people-image-container uk-cover-container">
-		                <?php if ($person->effective->image): ?>
-			                <?php echo LayoutHelper::render('joomla.html.image', ['src' => $person->effective->image, 'alt' => $person->firstname . ' ' . $person->lastname, 'class' => 'nxd-people-image', "uk-cover" => "true"]); ?>
+		                <?php if ($person->image): ?>
+			                <?php echo LayoutHelper::render('joomla.html.image', ['src' => $person->image, 'alt' => $person->firstname . ' ' . $person->lastname, 'class' => 'nxd-people-image', "uk-cover" => "true"]); ?>
 		                <?php endif; ?>
                     </div>
                 </div>
                 <div class="uk-card-body <?php echo $params->get('custom_card_content_classnames', '') ?>">
 					<?php if ($params->get('position_in_overview', '') === "top"): ?>
                         <div class="uk-width-1-1 person-position">
-							<?php echo $person->effective->position ?? ''; ?>
+							<?php echo $person->active_team->position ?? ''; ?>
                         </div>
 					<?php endif; ?>
-					<?php if (isset($person->effective->preparedNumber)): ?>
+					<?php if (isset($person->active_team->number)): ?>
                         <div class="uk-width-1-1 player-number">
-							<?php echo "#" . $person->effective->preparedNumber ?? ''; ?>
+							<?php echo "#" . $person->active_team->number ?? ''; ?>
                         </div>
 					<?php endif; ?>
                     <h3 class="uk-card-title <?php echo $params->get('custom_card_title_classnames', '') ?>">
-                        <div class="player-name">
-                            <div class="player-firstname">
+                        <div class="nxd-person-name">
+                            <div class="nxd-person-firstname">
 								<?php echo $person->firstname; ?>
                             </div>
-                            <div class="player-lastname">
+                            <div class="nxd-person-lastname">
 								<?php echo $person->lastname; ?>
                             </div>
                         </div>

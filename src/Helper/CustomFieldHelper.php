@@ -18,26 +18,36 @@ class CustomFieldHelper
 
 	public static function renderField($field)
 	{
-		// Check if the field rawvalue contains an url that contains partly the social media types defined in the array
-		preg_match('/(facebook|instagram|twitter)/i', $field->rawvalue, $matches);
-
-		// remove empty matches
-		$matches = array_filter($matches);
-
-		// if we have a match, we have a social media field
-		if ($matches)
+		if($soMeLink = self::checkForSocialMedia($field))
 		{
-			echo CustomFieldHelper::buildSocialLink($field->rawvalue, $matches[0]);
-
-			return;
+			return $soMeLink;
 		}
 
-
-		echo $field->value;
+		return $field->value;
 
 	}
 
-	protected static function buildSocialLink($fieldValue, $socialMediaType)
+	private static function checkForSocialMedia($field): false|string
+	{
+		if(is_string($field->rawvalue) && str_starts_with($field->rawvalue, 'http'))
+		{
+			// Check if the field rawvalue contains an url that contains partly the social media types defined in the array
+			preg_match('/(facebook|instagram|twitter)/i', $field->rawvalue, $matches);
+
+			// remove empty matches
+			$matches = array_filter($matches);
+
+			// if we have a match, we have a social media field
+			if ($matches)
+			{
+				return CustomFieldHelper::buildSocialLink($field->rawvalue, $matches[0]);
+			}
+		}
+
+		return false;
+	}
+
+	protected static function buildSocialLink($fieldValue, $socialMediaType): string
 	{
 
 		$socialMediaType           = strtolower($socialMediaType);
