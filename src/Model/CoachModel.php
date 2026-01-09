@@ -11,8 +11,11 @@
  *
  */
 
-
 namespace NXD\Module\FootballManagerPeople\Site\Model;
+
+// phpcs:disable PSR1.Files.SideEffects
+\defined('_JEXEC') or die;
+// phpcs:enable PSR1.Files.SideEffects
 
 use Joomla\Registry\Registry;
 use stdClass;
@@ -25,7 +28,10 @@ class CoachModel extends PersonModel
 
 	public function __construct(stdClass $personData, Registry $params)
 	{
-		parent::__construct($personData, $params);
+		$this->countries_table = '#__footballmanager_coaches_countries';
 		$this->custom_fields = $this->getCustomFields();
+
+		parent::__construct($personData, $params);
+
 	}
 }

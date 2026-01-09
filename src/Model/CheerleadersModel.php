@@ -14,12 +14,18 @@
 
 namespace NXD\Module\FootballManagerPeople\Site\Model;
 
-use Joomla\Registry\Registry;
+// phpcs:disable PSR1.Files.SideEffects
+\defined('_JEXEC') or die;
+// phpcs:enable PSR1.Files.SideEffects
 
-defined('_JEXEC') or die;
+use Joomla\Registry\Registry;
 
 class CheerleadersModel extends TeamMembersModel
 {
+	/**
+	 * @throws \Exception
+	 * @since 2.3.0
+	 */
 	public function getTeamMembers(Registry $params):array
 	{
 		$peopleData = $this->loadTeamMembersFromDb($params);

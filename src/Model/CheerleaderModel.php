@@ -11,14 +11,14 @@
  *
  */
 
-
 namespace NXD\Module\FootballManagerPeople\Site\Model;
 
-use Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
+// phpcs:disable PSR1.Files.SideEffects
+\defined('_JEXEC') or die;
+// phpcs:enable PSR1.Files.SideEffects
+
 use Joomla\Registry\Registry;
 use stdClass;
-
-defined('_JEXEC') or die;
 
 class CheerleaderModel extends PersonModel
 {
@@ -26,17 +26,16 @@ class CheerleaderModel extends PersonModel
 	public ?int $height;
 	public ?int $weight;
 
-	protected string $type = 'cheerleader';
-
 	public function __construct(stdClass $personData, Registry $params)
 	{
-		parent::__construct($personData, $params);
-
+		$this->type = 'cheerleader';
+		$this->countries_table = '#__footballmanager_cheerleaders_countries';
 		$this->age           = self::calculateAge($personData->birthday);
 		$this->height        = $personData->height;
 		$this->weight        = $personData->weight;
 		$this->custom_fields = $this->getCustomFields();
 
+		parent::__construct($personData, $params);
 	}
 
 }

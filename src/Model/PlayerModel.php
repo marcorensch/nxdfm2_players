@@ -11,17 +11,14 @@
  *
  */
 
-
 namespace NXD\Module\FootballManagerPeople\Site\Model;
 
-use Joomla\CMS\Factory;
-use Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
-use Joomla\Database\DatabaseInterface;
-use Joomla\Registry\Registry;
-use NXD\Component\Footballmanager\Administrator\Model\SponsorModel;
-use stdClass;
+// phpcs:disable PSR1.Files.SideEffects
+\defined('_JEXEC') or die;
+// phpcs:enable PSR1.Files.SideEffects
 
-defined('_JEXEC') or die;
+use Joomla\Registry\Registry;
+use stdClass;
 
 class PlayerModel extends PersonModel
 {
@@ -30,17 +27,19 @@ class PlayerModel extends PersonModel
 	public ?int $weight;
 	public array $custom_fields = [];
 	public array $sponsors = [];
-	protected string $type = 'player';
 
 	public function __construct(stdClass $personData, Registry $params)
 	{
-		parent::__construct($personData, $params);
+		$this->type = 'player';
+		$this->countries_table = '#__footballmanager_players_countries';
 
 		$this->age           = self::calculateAge($personData->birthday);
 		$this->height        = $personData->height;
 		$this->weight        = $personData->weight;
 		$this->custom_fields = $this->getCustomFields();
 		$this->sponsors      = $this->getSponsors($personData->sponsors);
+
+		parent::__construct($personData, $params);
 
 	}
 

@@ -1,0 +1,33 @@
+{
+  "name": "nxd/footballmanager-2-peoples-joomla-module",
+  "description": "Joomla! Module that displays FootballManager 2.x People for Joomla! 4.x and never",
+  "minimum-stability": "stable",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Marco Rensch",
+      "homepage": "https://www.nx-designs.ch",
+      "role": "Lead Developer"
+    }
+  ],
+  "config": {
+    "vendor-dir": "vendor",
+    "platform": {
+      "php": "8.3"
+    }
+  },
+  "require": {
+    "php": ">=8.3"
+  },
+  "scripts": {
+    "post-install-deploy": [
+      "rm -rf vendor",
+      "composer clear-cache",
+      "composer install --no-dev --optimize-autoloader"
+    ],
+    "deploy-zip": [
+      "mkdir -p dist",
+      "VERSION=$(awk -F'[<>]' '/<version>/{print $3}' mod_nxdfm2_people.xml) && rm -f ./dist/* && zip -r dist/mod_nxdfm2_people_v${VERSION}.zip . -x 'vendor', -x 'composer.*' -x '*.DS_Store' -x '*.git*' -x 'Thumbs.db' -x 'node_modules/*' -x 'vendor/bin/*' -x '.idea' -x '.idea/*' -x '*/.idea' -x '*/.idea/*' '*/.gitignore' -x 'dist/*' -x '*.zip'"
+    ]
+  }
+}

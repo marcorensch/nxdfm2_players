@@ -52,6 +52,7 @@ class Dispatcher extends AbstractModuleDispatcher implements HelperFactoryAwareI
 		$model->setModuleStates($params);
 
 		$data['team'] = $model->getTeamMembers($params) ?? array();
+		$data['uuid'] = uniqid() . "_" . rand(100, 999);
 
 		return $data;
 	}
