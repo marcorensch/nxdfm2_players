@@ -12,18 +12,20 @@
  *
  */
 
-
 namespace NXD\Module\FootballManagerPeople\Site\Model;
 
-defined('_JEXEC') or die;
+// phpcs:disable PSR1.Files.SideEffects
+\defined('_JEXEC') or die;
+
+// phpcs:enable PSR1.Files.SideEffects
 
 use Joomla\CMS\Date\Date;
 use Joomla\CMS\Factory;
+use Joomla\CMS\Log\Log;
 use Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
 use Joomla\Database\DatabaseInterface;
 use Joomla\Registry\Registry;
 use NXD\Module\FootballManagerPeople\Site\Model\TeamDataModel;
-
 
 class PersonModel
 {
@@ -32,7 +34,8 @@ class PersonModel
 	public string $lastname = '';
 	public string $image = '';
 	public string $about;
-	public string|null $nation;
+	public array $nations;
+	protected string $countries_table = '';
 
 	/**
 	 * @var TeamDataModel[]|null $teams Array of TeamData items or null
@@ -64,7 +67,7 @@ class PersonModel
 		$this->active_team   = $this->setActiveTeam($params->get('team_id', 0));
 		$this->image         = self::definePersonImage($personData->image, $params->get('fallback_image', ''));
 		$this->about         = $personData->about;
-		$this->nation        = $personData->nation;
+		$this->nations       = $this->loadNations();
 		$this->custom_fields = $this->getCustomFields();
 	}
 
@@ -137,10 +140,10 @@ class PersonModel
 	protected function getCustomFields(): array
 	{
 		$groupFields = false; // can be added as feature if needed
-		$type = $this->type;
+		$type        = $this->type;
 
 		// Get the associated fields for the currently used type (player, coach, cheerleader)
-		$fields = FieldsHelper::getFields('com_footballmanager.'.$type, $this, true);
+		$fields = FieldsHelper::getFields('com_footballmanager.' . $type, $this, true);
 
 		// Group the fields by field group if requested.
 		if ($groupFields)
@@ -183,7 +186,7 @@ class PersonModel
 		return $customFields;
 	}
 
-	protected function getSponsors($sponsors):array
+	protected function getSponsors($sponsors): array
 	{
 		if (!$sponsors) return [];
 		$sponsors = json_decode($sponsors);
@@ -194,7 +197,7 @@ class PersonModel
 			$sponsorIds[] = $sponsor->sponsor;
 		}
 
-		if(empty($sponsorIds)) return array();
+		if (empty($sponsorIds)) return array();
 
 		$db    = Factory::getContainer()->get(DatabaseInterface::class);
 		$query = $db->getQuery(true);
@@ -202,7 +205,51 @@ class PersonModel
 			->from('#__footballmanager_sponsors')
 			->where('id IN (' . implode(',', $sponsorIds) . ')');
 		$db->setQuery($query);
+
 		return $db->loadObjectList();
 
+	}
+
+	protected function loadNations(): array
+	{
+		if (!$this->id || !$this->countries_table){
+			Log::add('Person ID or countries table not set for ' . $this->type . ' ID:' . $this->id, Log::ERROR, 'FootballManager 2 People Module');
+			return [];
+		}
+
+		$idColumn = $this->type . '_id'; // z.B. 'player_id', 'coach_id'
+
+		$db    = Factory::getContainer()->get(DatabaseInterface::class);
+		$query = $db->getQuery(true);
+		$query->select(array(
+			$db->quoteName('pc.id'),
+			$db->quoteName('pc.country_id'),
+			$db->quoteName('pc.is_primary'),
+			$db->quoteName('c.title'),
+			$db->quoteName('c.alias'),
+			$db->quoteName('c.iso'),
+			$db->quoteName('c.iso3')
+		))
+			->from($db->quoteName($this->countries_table, 'pc'))
+			->innerJoin(
+				$db->quoteName('#__footballmanager_countries', 'c') . ' ON ' .
+				$db->quoteName('c.id') . ' = ' . $db->quoteName('pc.country_id')
+			)
+			->where($db->quoteName('pc.' . $idColumn) . ' = ' . $db->quote($this->id));
+
+		try
+		{
+			$db->setQuery($query);
+			$nations = $db->loadAssocList();
+			return $nations ?: [];
+		}
+		catch (\Exception $e){
+			error_log($e->getMessage());
+			error_log($query->__toString());
+			Log::add($e->getMessage(), Log::ERROR, 'FootballManager 2 People Module');
+			Log::add($query->__toString(), Log::ERROR, 'FootballManager 2 People Module');
+		}
+
+		return [];
 	}
 }

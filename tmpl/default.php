@@ -10,6 +10,8 @@
  * @var $params Joomla\Registry\Registry        The module parameters
  * @var $team   array                           contains the people to display
  * @var $module /stdClass                       the module instance
+ * @var $uuid   string                          the module uuid
+ *
  */
 
 defined('_JEXEC') or die;
@@ -41,7 +43,7 @@ $wa->registerAndUseStyle('NXDPlayersCSS', 'modules/mod_nxdfm2_people/tmpl/assets
 $wa->registerAndUseStyle('NXDPlayersGridItemCSS', 'modules/mod_nxdfm2_people/tmpl/assets/css/grid.css');
 $paddingBottomPercent = (100 / explode(":", $params->get('preview_img_aspect_ratio', '4:3'))[0]) * explode(":", $params->get('preview_img_aspect_ratio', '4:3'))[1];
 $wa->addInlineStyle('
-    #nxd-people-module-' . $module->id . ' .nxd-people-image-container {
+    #nxd-people-module-' . $uuid . ' .nxd-people-image-container {
         width: 100%;
         height: 0;
         padding-bottom: ' . $paddingBottomPercent . '%;
@@ -90,6 +92,6 @@ if ($params->get('debug', 0)): ?>
 <?php endif; ?>
 
 <?php
-echo '<div id="nxd-people-module-' . $module->id . '" class="nxd-people-module ' . $params->get('moduleclass_container_sfx', '') . '">';
+echo '<div id="nxd-people-module-' . $uuid . '" class="nxd-people-module ' . $params->get('moduleclass_container_sfx', '') . '">';
 include ModuleHelper::getLayoutPath('mod_nxdfm2_people', $params->get('layout', 'grid') . '/default');
 echo '</div>';

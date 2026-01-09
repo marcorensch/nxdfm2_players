@@ -12,8 +12,11 @@
  *
  */
 
-
 namespace NXD\Module\FootballManagerPeople\Site\Model;
+
+// phpcs:disable PSR1.Files.SideEffects
+\defined('_JEXEC') or die;
+// phpcs:enable PSR1.Files.SideEffects
 
 class DataFieldModel {
 	public string $title;

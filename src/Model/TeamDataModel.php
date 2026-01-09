@@ -14,10 +14,11 @@
 
 namespace NXD\Module\FootballManagerPeople\Site\Model;
 
-use DateTime;
-use Joomla\CMS\Date\Date;
+// phpcs:disable PSR1.Files.SideEffects
+\defined('_JEXEC') or die;
+// phpcs:enable PSR1.Files.SideEffects
 
-defined('_JEXEC') or die;
+use Joomla\CMS\Date\Date;
 
 class TeamDataModel
 {

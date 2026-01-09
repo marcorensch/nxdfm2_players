@@ -11,15 +11,13 @@
  *
  */
 
-
 namespace NXD\Module\FootballManagerPeople\Site\Model;
 
-use Joomla\CMS\Factory;
-use Joomla\Registry\Registry;
-use Joomla\Database\DatabaseInterface;
-use Joomla\Database\QueryInterface;
+// phpcs:disable PSR1.Files.SideEffects
+\defined('_JEXEC') or die;
+// phpcs:enable PSR1.Files.SideEffects
 
-defined('_JEXEC') or die;
+use Joomla\Registry\Registry;
 
 class CoachesModel extends TeamMembersModel
 {

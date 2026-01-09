@@ -11,16 +11,16 @@
  *
  */
 
-
 namespace NXD\Module\FootballManagerPeople\Site\Model;
+
+// phpcs:disable PSR1.Files.SideEffects
+\defined('_JEXEC') or die;
+// phpcs:enable PSR1.Files.SideEffects
 
 use Joomla\CMS\Factory;
 use Joomla\Database\DatabaseInterface;
-use Joomla\Database\QueryInterface;
 use Joomla\Registry\Registry;
 use Joomla\CMS\MVC\Model\BaseDatabaseModel;
-
-defined('_JEXEC') or die;
 
 class TeamMembersModel extends BaseDatabaseModel
 {
@@ -52,7 +52,7 @@ class TeamMembersModel extends BaseDatabaseModel
 		$sortingDirection    = $this->getState('sorting.direction', 'ASC');
 		$orderBy             = $this->getState('sorting.orderBy', 'ordering');
 
-		$keys = array('id', 'firstname', 'lastname', 'image', 'about', 'country_id', 'ordering');
+		$keys = array('id', 'firstname', 'lastname', 'image', 'about', 'ordering');
 		if (in_array($context, array('players', 'cheerleaders')))
 		{
 			$keys[] = 'height';
@@ -209,8 +209,9 @@ class TeamMembersModel extends BaseDatabaseModel
 		$people = $db->loadObjectList();
 
 		return $people;
-
 	}
+
+
 
 	protected function sortItems(&$people, $params): void
 	{

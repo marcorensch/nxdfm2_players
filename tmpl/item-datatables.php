@@ -66,11 +66,11 @@ $personDataRowTemplate = new FileLayout('item-simple-datatable-row', __DIR__ . '
 				"label" => "MOD_NXDFM2_PEOPLE_WEIGHT_LABEL",
 				"value" => $person->weight . "kg"
 			]);
-		if ($person->nation)
+		if ($person->nations)
             echo $personDataRowTemplate->render([
-                    "type" => "data",
+                    "type" => "nations",
                     "label" => "MOD_NXDFM2_PEOPLE_NATION_LABEL",
-                    "value" => $person->nation
+                    "value" => $person->nations
             ]);
 		?>
         <!-- Customfields -->
