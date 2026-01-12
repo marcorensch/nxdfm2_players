@@ -224,7 +224,6 @@ class PersonModel
 		$query->select(array(
 			$db->quoteName('pc.id'),
 			$db->quoteName('pc.country_id'),
-			$db->quoteName('pc.is_primary'),
 			$db->quoteName('c.title'),
 			$db->quoteName('c.alias'),
 			$db->quoteName('c.iso'),
@@ -235,7 +234,8 @@ class PersonModel
 				$db->quoteName('#__footballmanager_countries', 'c') . ' ON ' .
 				$db->quoteName('c.id') . ' = ' . $db->quoteName('pc.country_id')
 			)
-			->where($db->quoteName('pc.' . $idColumn) . ' = ' . $db->quote($this->id));
+			->where($db->quoteName('pc.' . $idColumn) . ' = ' . $db->quote($this->id))
+			->order($db->quoteName('pc.ordering') . ' ASC');
 
 		try
 		{
